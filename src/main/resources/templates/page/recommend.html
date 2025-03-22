@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<title>[[#{menu.recommend}]]</title>
+	<th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+	<link rel="stylesheet" th:href="@{css/recommend.css}">
+</head>
+<style>
+	.row g-5 {
+		display: inline-block;
+	}
+</style>
+<body style="-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none">
+	<th:block th:insert="~{inc/header.html :: index_header_menu}"></th:block>
+	<th:block th:insert="~{inc/header.html :: index_header_content_basic(#{menu.recommend},#{menu.recommend.desc})}"></th:block>
+	
+	
+	<div class="recommend-container">
+		<div class="section services-section">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-lg-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="">
+						<h3 class="subheading">RECOMMEND INGREDIENT</h3>
+						<h2 class="heading">건강 상태에 맞는 맞춤 영양제 성분</h2>
+						<div class="sub-info">* 알고리즘에 따른 영양제 추천으로 자세한 정보는 반드시 의사 혹은 약사에게 문의하시길 바랍니다.</div>
+					</div>		
+				</div>
+
+				<!-- 성별 나이대별 -->
+				<div th:if="${not #lists.isEmpty(galist)}" th:text="'성별: ' + (${galist[0].gender == 'f' ? '여자' : '남자'}) + ' & ' + '연령: ' + ${galist[0].age} + '대'" class="category"></div>
+					<div class="row g-5">
+					    <div class="col-lg-4" data-aos="fade-up" th:each="galist, iterStat : ${galist}"
+					         th:attr="data-aos-delay=${iterStat.index == 0 ? ' ' : (iterStat.index) * 100}">
+					        <div class="feature-1 d-block" th:attr="onclick='location.href=\'/ingredient?category=' + ${galist.ingredientName} + '\''">
+					            <div class="mb-3">
+					                <!-- ingredientName에 맞는 이미지 경로 -->
+					                <img th:src="'img/ingredient/' + ${galist.ingredientName} + '.png'" class="ingredient-icon">
+					            </div>
+					            <div>
+					                <!-- ingredientName과 functionalContent를 표시 -->
+					                <h3 th:text="${galist.ingredientName}"></h3>
+									<hr>
+					                <p th:utext="${galist.functionalContent}"></p>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+
+				
+				<!-- 건강 검진 --> 
+				<div th:if="${not #lists.isEmpty(hlist)}" th:text="${hlist.isEmpty() ? '' : hlist[0].name}" class="category"></div>
+					<div class="row g-5">
+						<div class="col-lg-4"  data-aos="fade-up" th:each="hlist, iterStat : ${hlist}" th:attr="data-aos-delay=${iterStat.index == 0 ? ' ' : (iterStat.index) * 100}">
+							<div class="feature-1 d-block" th:attr="onclick='location.href=\'/ingredient?category=' + ${hlist.ingredientName} + '\''">
+								<div class="mb-3">
+									<img th:src="'img/ingredient/'+${hlist.ingredientName}+'.png'" class="ingredient-icon">
+								</div>
+								<div>
+									<h3 th:text="${hlist.ingredientName}"></h3>
+									<hr>
+									<p th:utext="${hlist.functionalContent}"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				<!-- 주요 장기 -->
+				<div th:if="${not #lists.isEmpty(olist)}" th:text="${olist.isEmpty() ? '' : olist[0].name}" class="category"></div>
+				<div class="row g-5">
+					<div class="col-lg-4"  data-aos="fade-up" th:each="olist, iterStat : ${olist}" th:attr="data-aos-delay=${iterStat.index == 0 ? ' ' : (iterStat.index) * 100}">
+						<div class="feature-1 d-block" th:attr="onclick='location.href=\'/ingredient?category=' + ${olist.ingredientName} + '\''">
+							<div class="mb-3">
+								<img th:src="'img/ingredient/'+${olist.ingredientName}+'.png'" class="ingredient-icon">
+							</div>
+							<div>
+								<h3 th:text="${olist.ingredientName}"></h3>
+								<hr>
+								<p th:utext="${olist.functionalContent}"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 일상 생활 -->
+				<div th:if="${not #lists.isEmpty(dlist)}" th:text="${dlist.isEmpty() ? '' : dlist[0].name}" class="category"></div>
+				<div class="row g-5">
+					<div class="col-lg-4"  data-aos="fade-up" th:each="dlist, iterStat : ${dlist}" th:attr="data-aos-delay=${iterStat.index == 0 ? ' ' : (iterStat.index) * 100}">
+						<div class="feature-1 d-block" th:attr="onclick='location.href=\'/ingredient?category=' + ${dlist.ingredientName} + '\''">
+							<div class="mb-3">
+								<img th:src="'img/ingredient/'+${dlist.ingredientName}+'.png'" class="ingredient-icon">
+							</div>
+							<div>
+								<h3 th:text="${dlist.ingredientName}"></h3>
+								<hr>
+								<p th:utext="${dlist.functionalContent}"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="survey-btn">
+					<button type="button" class="retry-btn" onclick="location.href='/survey'"><img src="img/recommend/retryIcon.svg" class="retry-icon">다시 검사하기</button>
+				</div>
+					
+			</div>
+	</div>
+	</div>
+
+	<th:block th:insert="~{inc/footer.html :: footer}"></th:block>
+	<th:block th:insert="~{inc/asset.html :: templates_js}"></th:block>
+</body>
+</html>

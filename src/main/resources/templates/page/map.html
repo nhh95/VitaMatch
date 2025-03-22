@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<title>[[#{menu.map}]]</title>
+	<th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+	<link rel="stylesheet" th:href="@{css/map.css}">
+	<script type="text/javascript" 
+	    th:src="@{'https://dapi.kakao.com/v2/maps/sdk.js?appkey=' + ${kakaoApiKey} + '&libraries=services'}">
+	</script>
+	<script src="https://kit.fontawesome.com/0c69fdf2c0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<th:block th:insert="~{inc/header.html :: index_header_menu}"></th:block>
+	<th:block th:insert="~{inc/header.html :: index_header_content_basic(#{menu.map},#{menu.map.desc})}"></th:block>
+	<div class="map-container">
+		<div class="section services-section">
+			<div class="map-col aos-init aos-animate" data-aos="fade-up" data-aos-delay="">
+				<h3 class="subheading">Pharmacy Map</h3>
+				<h2 class="map-heading heading">
+					<img src="img/map/mapIcon.svg" class="map-icon">
+					약국 찾기
+				</h2>
+				<div class="map-box">
+					<div class="map-search-box">
+						<div class="map-search">
+							<div class="sido-gugun">
+								<select name="sido1" id="sido1"></select>
+								<select name="gugun1" id="gugun1"></select>
+							</div>
+							<div id="menu_wrap" class="bg_white">
+								<div class="option"> 
+									<div class="search-container">
+									    <input type="text" id="keyword" placeholder="검색어를 입력하세요." class="search-input">
+									    <button type="button" class="search-icon-btn" onclick="searchPlaces(); closePopup('click'); "></button>
+									</div>
+								</div>
+								<div class="scroll-container">
+					                <ul id="placesList"></ul>
+					                <div id="pagination"></div> <!-- 페이징 바 -->
+					            </div>
+				            </div>
+						</div>
+					</div>
+					<div id="map">
+						<div class="detail-popup" id="detail-popup">
+							<div class="map-detail-title">
+								<h2>약국 상세</h2>
+								<button class="close-popup"></button>
+								<!-- 동적 추가 -->
+							</div> 
+				        </div>  
+						<div class="map-gps">
+							<!-- <input type="image" src="/img/map/move-address.svg"> -->
+							<input type="image" src="/img/map/gps.svg" onclick="currentLocation();">
+						</div>
+					</div> 
+				</div>
+			</div>	
+		</div>	
+	</div>
+	<th:block th:insert="~{inc/footer.html :: footer}"></th:block>
+	<th:block th:insert="~{inc/asset.html :: templates_js}"></th:block>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script th:src="@{js/map.js}"></script>
+</body>
+</html>

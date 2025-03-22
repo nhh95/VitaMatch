@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>[[#{menu.news}]]</title>
+	<th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+	<link rel="stylesheet" th:href="@{css/news.css}" />
+</head>
+
+<body>
+	<th:block th:insert="~{inc/header.html :: index_header_menu}"></th:block>
+	<th:block th:insert="~{inc/header.html :: index_header_content_basic(#{menu.news},#{menu.news.desc})}"></th:block>
+	<div class="news-container">
+		<!-- popular news -->
+		<div class="section">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-12 text-center" data-aos="fade-up" data-aos-delay="0">
+						<span class="subheading mb-3">[[#{menu.news}]]</span>
+						<h2 class="heading">Popular News</h2>
+					</div>
+				</div>
+				<div class="row align-items-stretch">
+					<div class="col-6 col-sm-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+						<div class="media-entry">
+							<a href="https://www.dailian.co.kr/news/view/1430539/?sc=Naver" class="thumb"
+								target="_blank">
+								<img th:src="@{img/news/news_1.jpeg}" alt="Image" class="img-fluid" />
+							</a>
+							<div class="bg-white m-body">
+								<span class="date">Nov 19, 2024</span>
+								<h3>
+									<a href="https://www.dailian.co.kr/news/view/1430539/?sc=Naver" target="_blank"
+										title="[오늘 날씨] '체감온도 0도↓' 겨울 성큼…찬바람 불 때 먹어야 하는 영양제">[오늘 날씨] '체감온도 0도↓' 겨울
+										성큼…찬바람 불 때 먹어야 하는
+										영양제</a>
+								</h3>
+								<p>
+									겨울철에는 급격한 기온 변화로 인해
+									심혈관 질환이 발생할 수 있는데, 오메가
+									3는 심혈관 건강에 도움을 주는 영양제다.
+									심혈관 건강뿐만 아
+								</p>
+
+								<a href="https://www.dailian.co.kr/news/view/1430539/?sc=Naver"
+									class="more d-flex align-items-center float-start" target="_blank">
+									<span class="label">Read More</span>
+									<span class="arrow"><span class="icon-keyboard_arrow_right"></span></span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 col-sm-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+						<div class="media-entry">
+							<a href="https://www.news1.kr/industry/general-industry/5604132" class="thumb"
+								target="_blank">
+								<img th:src="@{img/news/news_2.avif}" alt="Image" class="img-fluid" />
+							</a>
+							<div class="bg-white m-body">
+								<span class="date">Nov 18, 2024</span>
+								<h3>
+									<a href="https://www.news1.kr/industry/general-industry/5604132" target="_blank"
+										title='"반려동물 영양제 유효성분 확인…오메가3, 심장 건강에 도움"'>"반려동물 영양제 유효성분
+										확인…오메가3, 심장 건강에 도움"</a>
+								</h3>
+								<p>
+									정 원장은 "심장 영양제를 고를 때는
+									항산화영양소 등 유효성분이 있는지 보고,
+									항염작용이 있는 오메가3 성분이 든
+									영양제를 보충해 건강
+								</p>
+
+								<a href="https://www.news1.kr/industry/general-industry/5604132"
+									class="more d-flex align-items-center float-start" target="_blank">
+									<span class="label">Read More</span>
+									<span class="arrow"><span class="icon-keyboard_arrow_right"></span></span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 col-sm-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+						<div class="media-entry">
+							<a href="https://news.hidoc.co.kr/news/articleView.html?idxno=40164" class="thumb"
+								target="_blank">
+								<img th:src="@{img/news/news_3.jpg}" alt="Image" class="img-fluid" />
+							</a>
+							<div class="bg-white m-body">
+								<span class="date">Nov 06, 2024</span>
+								<h3>
+									<a href="https://news.hidoc.co.kr/news/articleView.html?idxno=40164" target="_blank"
+										title="현대인의 눈 건강을 위한 영양제 5가지">현대인의 눈 건강을 위한 영양제
+										5가지</a>
+								</h3>
+								<p>
+									현대 사회에서 스마트폰, 태블릿, 컴퓨터
+									등 디지털 기기 사용이 급증하면서 눈
+									건강에 대한 우려가 커지고 있습니다.
+								</p>
+								<a href="https://news.hidoc.co.kr/news/articleView.html?idxno=40164"
+									class="more d-flex align-items-center float-start" target="_blank">
+									<span class="label">Read More</span>
+									<span class="arrow"><span class="icon-keyboard_arrow_right"></span></span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 col-sm-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+						<div class="media-entry">
+							<a href="https://www.joongang.co.kr/article/25289167" class="thumb" target="_blank">
+								<img th:src="@{img/news/news_4.jpg}" alt="Image" class="img-fluid" />
+							</a>
+							<div class="bg-white m-body">
+								<span class="date">Nov 03, 2024</span>
+								<h3>
+									<a href="https://www.joongang.co.kr/article/25289167" target="_blank"
+										title='술 마시면 2년 빨리 죽는다 "이 영양제 꼭 챙겨 먹어라"'>술 마시면 2년 빨리 죽는다 "이
+										영양제 꼭 챙겨 먹어라"</a>
+								</h3>
+								<p>
+									30대도 알코올성 치매…혼술이 뇌 망친다
+									최근 "혼자 한잔하면 뇌가 늙는다"는
+									충격적인 연구 결과도 쏟아지고 있다.
+									김지용 연세웰정신건강의학과 원장은
+									'혼술' 문화가 뇌 건강에 치명적일 수
+									있다고 경고한다. 연구에 따르면, 18세 때
+									혼자 술을 마신 경험이 단 한 번이라도
+									있는 사람은 그렇지 않은 사람보다 알코올
+									사용 장애 위험이 35% 높았다.
+								</p>
+								<a href="https://www.joongang.co.kr/article/25289167"
+									class="more d-flex align-items-center float-start" target="_blank">
+									<span class="label">Read More</span>
+									<span class="arrow"><span class="icon-keyboard_arrow_right"></span></span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- news list -->
+		<div class="section section-2">
+			<div class="container">
+				<div class="row align-items-center">
+					
+					<div class="col-lg-5">
+						<span class="subheading" data-aos="fade-up">[[#{menu.news}]] List</span>
+					</div>
+					
+					<div class="align-items-stretch" th:each="news : ${list}">
+						<div class="" data-aos="fade-up" data-aos-delay="100" th:object="${news}">
+						
+							<div class="media-entry">
+								<div class="bg-white m-body">
+									<span class="date">[[*{#temporals.format(pubDate, 'MMM dd, yyyy HH:mm', T(java.util.Locale).ENGLISH)}]]</span>
+									<h3>
+										<a th:href="*{link}" target="_blank">
+											[(*{title})]
+										</a>
+									</h3>
+									<p>[(*{description})]</p>
+
+									<a th:href="*{link}" class="more d-flex align-items-center float-start" target="_blank">
+										<span class="label">Read More</span>
+										<span class="arrow"><span class="icon-keyboard_arrow_right"></span></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row align-items-center py-5">
+						<div class="col-lg-3">
+							<!-- Pagination (1 of 10) -->
+						</div>
+						<div class="col-lg-6 text-center">
+							<div class="custom-pagination">
+								[(${page})]
+							<!-- 
+								<a href="#">1</a>
+								<a href="#" class="active">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+								<a href="#">5</a>
+							 -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<th:block th:insert="~{inc/footer.html :: footer}"></th:block>
+	<th:block th:insert="~{inc/asset.html :: templates_js}"></th:block>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="_csrf" th:content="${_csrf.token}" />
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+
+<title>[[#{menu.combination}]]</title>
+<th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+<link rel="stylesheet" th:href="@{css/combination.css}" />
+<link rel="stylesheet" th:href="@{css/chatAI.css}" />
+</head>
+
+<body>
+	<th:block th:insert="~{inc/header.html :: index_header_menu}"></th:block>
+	<th:block
+		th:insert="~{inc/header.html :: index_header_content_basic(#{menu.combination},#{menu.combination.desc})}">
+	</th:block>
+
+	<div id="combination-container">
+		<div class="section">
+			<div class="container">
+
+				<div class="row mb-5">
+					<div class="col-lg-5" data-aos="fade-up" data-aos-delay="">
+						<h3 class="subheading">영양제 조합</h3>
+						<h2 class="heading">영양제 성분 카테고리</h2>
+					</div>
+					<!-- 카테고리 선택  -->
+					<form method="POST" action="/combination/ajax">
+						<div class="ingredient_category">
+							<div th:each="seqName : ${ingredientSeqName}"
+								class="ingredient_category_radio_btn">
+								<input th:id="'ingredient_' + ${seqName.key}" type="radio"
+									name="select_ingredient" th:value="${seqName.key}"> <label
+									th:for="'ingredient_' + ${seqName.key}"> <span
+									th:text="${seqName.value}"></span>
+								</label>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="section select_ingredient_one">
+					<div class="container">
+						<div class="row ">
+							<div class="col-lg-5 mb-5 mb-lg-0 me-auto testimonial-wrap"
+								data-aos="fade-up" data-aos-delay="0">
+								<h3 class="subheading">선택된 영양제</h3>
+								<h2 class="heading mb-5 selectOne">오메가3</h2>
+
+								<div class="wide-slider-testimonial-wrap">
+
+									<div class="wide-slider-testimonial">
+										<div class="item">
+											<blockquote class="block-testimonial">
+												<div class="author">
+													<img src="/img/ingredient/오메가3.png" id="selectOneImg">
+													<h3>효능</h3>
+													<p id="ingredientContent">기능 넣을 거임</p>
+												</div>
+											</blockquote>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+
+							<div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-up"
+								data-aos-delay="100" id="combinationButton">
+								<h3 class="subheading">선택된 영양제와 관련된 성분 조합</h3>
+								<h2 class="heading mb-5">
+									<span class="selectOne">오메가3</span>과(와) 관련된 성분 조합은?
+								</h2>
+
+								<div class="custom-accordion" id="accordion_1">
+									<div class="accordion-item" id="combinationGood">
+										<h2 class="mb-0">
+											<button class="btn btn-link" type="button"
+												data-bs-toggle="collapse" data-bs-target="#collapseOne"
+												aria-expanded="true" aria-controls="collapseOne"
+												id="buttonOne">같이 먹으면 좋은 조합</button>
+										</h2>
+
+										<div id="collapseOne" class="collapse show"
+											aria-labelledby="headingOne" data-bs-parent="#accordion_1">
+										</div>
+									</div>
+									<!-- .accordion-item -->
+
+									<div class="accordion-item" id="combinationBad">
+										<h2 class="mb-0">
+											<button class="btn btn-link" type="button"
+												data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+												aria-expanded="false" aria-controls="collapseTwo"
+												id="buttonTwo">같이 먹으면 안 좋은 조합</button>
+										</h2>
+										<div id="collapseTwo" class="collapse"
+											aria-labelledby="headingTwo" data-bs-parent="#accordion_1">
+										</div>
+										<!-- .accordion-item -->
+
+									</div>
+								</div>
+								<div class="combinationInfo">** 자세한 정보는 반드시 의사나 약사에게 확인하시기
+									바랍니다.</div>
+							</div>
+						</div>
+						<!-- .container -->
+					</div>
+					<!-- /.untree_co-section -->
+				</div>
+				<th:block th:insert="~{page/chatAI.html :: chatAIImg }"></th:block>
+				<th:block th:insert="~{page/chatAI.html :: chatAI }"></th:block>
+				
+			</div>
+		</div>
+	</div>
+
+	<th:block th:insert="~{inc/footer.html :: footer}"></th:block>
+	<th:block th:insert="~{inc/asset.html :: templates_js}"></th:block>
+	<script th:src="@{js/combination.js}"></script>
+	<script th:src="@{js/chatAI.js}"></script>
+</body>
+</html>

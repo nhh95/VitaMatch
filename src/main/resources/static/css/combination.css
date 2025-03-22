@@ -1,0 +1,128 @@
+/* 영양성분 선택 -------------------------------- */
+.ingredient_category {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+	margin-top: 55px;
+	gap: 20px;
+}
+
+.ingredient_category_radio_btn {
+	display: inline-block;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.ingredient_category_radio_btn label {
+	width: 260px;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid var(--bs-gray);
+	border-radius: 10px;
+	margin: 0 auto;
+	font-size: 22px;
+	color: var(--bs-gray-dark);
+}
+
+.ingredient_category_radio_btn input[type=radio] {
+	display: none;
+}
+
+.ingredient_category_radio_btn input[type=radio]:checked+label {
+	background: var(--bs-primary);
+	color: var(--bs-white);
+	border: none;
+}
+
+.ingredient_category_radio_btn label:hover {
+	color: var(--bs-white);
+	background: var(--bs-primary);
+	border: none;
+}
+
+
+/* 선택된 영양성분 -------------------------------- */
+.section.select_ingredient_one {
+	background-color: #F8F9FA;
+	padding-top : 50px;
+	padding-bottom : 10px;
+	min-height: 650px; 
+}
+
+.row {
+	margin: 10px;
+}
+
+/* 선택된 영양성분 기능 -------------------------------- */
+.block-testimonial .author {
+	display: flex;
+	flex-direction: column;
+}
+
+.block-testimonial .author img {
+	align-self: center;
+	width: 180px;
+	height: 180px;
+}
+
+.block-testimonial .author h3 {
+	font-size: 25px;
+	margin-top: 30px;
+	margin-left: 20px;
+}
+
+.block-testimonial .author p {
+	font-size: 17px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+/* 선택된 영양제와 조합인 이유 -------------------------------- */
+.accordion-body {
+	display: grid;
+	grid-template-columns: 1fr 3.5fr 0.5fr;
+	background-color: white;
+	border: 1px solid var(--bs-light);
+	word-wrap: break-word;
+	width: 100%;
+	justify-items: center;
+}
+
+.accordion-body div, 
+.accordion-body a {
+    word-wrap: break-word;  /* 긴 단어나 텍스트 줄바꿈 */
+    overflow-wrap: break-word;  /* 긴 텍스트가 넘칠 때 줄바꿈 */
+    height: auto;  /* 높이가 자동으로 조정되도록 함 */
+}
+
+
+.accordion-body a {
+	margin-left: 10px;
+	margin-right: 0px;
+}
+
+.heading.mb-5 {
+	font-size: 35px;
+}
+
+
+
+/* 같이 먹으면 좋은 조합과 아닌 조합 */
+#combinationGood{
+	display : none; 
+}
+
+#combinationBad{
+	display : none; 
+}
+
+/* 안내 문구 추가 */
+.combinationInfo{
+	font-size : 15px;
+	color : var(--bs-danger);
+	padding : 10px;
+	margin-top : 10px;
+}
+
+/* 아코디언_조합 설명 */

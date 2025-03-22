@@ -1,0 +1,144 @@
+	
+html, body {
+    overflow-x: hidden; 
+}
+
+.productInfoview {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.productInfotable {
+/*	display: flex;
+	justify-content: center;
+	align-items: center;	*/	
+	position: relative;
+	width: 100%;
+}
+
+.productInfotable th, .productInfotable td { 
+    padding: 15px;
+   
+}
+
+.productInfotable th {
+    width: 200px;  
+    font-size: 16px;
+    text-align: center;
+	background-color:#10D0A1;
+	color: white;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.productInfotable td {
+    width: 1000px; 
+    font-size: 14px; 
+	padding-left: 20px; 
+	border-top: 1px solid #10D0A1;
+	border-bottom: 1px solid #10D0A1;
+}
+
+.productLongString{
+	text-align:left
+}
+
+.productInfoRowHeader {
+    
+	color: #10D0A1;
+}
+
+.productInfoImg{
+	display: flex;
+	position: relative;
+	width: 100%;
+	margin-bottom: 30px;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+
+
+.productInfoIngredient {
+	margin-left:30px;
+	
+}
+
+.productImgSize{
+	width:400px;
+	height:400px;
+
+}
+
+.productImgtableContent{
+	margin-left: 100px;
+	text-align: left;
+	font-size: 50px;
+	
+}
+
+.productImgtableContentheader{
+	color: #10D0A1;
+	font-size: 35px;
+
+}
+
+.productImgtableContentName{
+	
+	font-size: 30px;
+	color: gray;
+	
+	margin-bottom: 50px;
+}
+
+.productImgtableContentCompany{
+	font-size: 30px;
+	color: gray;
+
+}
+
+.heading{
+	color: black;
+	
+}
+
+
+
+.shopping-txt,
+.shopping-btn {
+	border-radius: 5px;
+	height: 42px;
+	padding: 3px;
+	font-size: 16px;
+	text-align: center;
+	
+}
+
+.shopping-txt {
+	border: 2px solid #10D0A1;
+	width: 550px;
+}
+
+.shopping-btn {
+	border: none;
+	width: 120px;
+	font-weight: bold;
+	background-color: #10D0A1;
+	color: white;
+	float: right;
+	margin-bottom: 30px;
+}
+
+.shopping-btn:hover,
+.write-btn:hover {
+	background-color: #10D0A1;
+}
+
+
+
+.shoppingbutton{
+	background-color: #10D0A1;
+}

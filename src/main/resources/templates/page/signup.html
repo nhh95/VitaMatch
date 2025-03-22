@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>[[#{menu.signup}]]</title>
+    <th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+    <link rel="stylesheet" th:href="@{css/main.css}">
+    <link rel="stylesheet" th:href="@{css/signup.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+</head>
+<body>
+	
+    <th:block th:insert="~{inc/header.html :: index_header_menu}"></th:block>
+   	<th:block th:insert="~{inc/header.html :: index_header_content_basic(#{menu.signup},#{menu.signup.desc})}"></th:block>
+    <div class="login-title">[[#{title}]]</div>
+    <!-- <div class="font-size-20 font-koho align-center">회원가입 하시고 저희 웹사이트의 다양한 혜택을 누리세요!</div> -->
+
+    <form method="POST" action="/signupok" id="signupForm">
+        <div class="login-form-box">
+            <table class="stretch">
+				<!-- ID -->
+				<tr class="flex-row">
+				    <td class="username-group">
+			            <input id="username" type="text" name="username" placeholder=" " class="signup" required />
+			            <label for="username">[[#{signup.username}]]</label>	
+			            <button type="button" id="checkUsername" class="check-username-button buton" disabled>[[#{signup.username.check}]]</button>
+			            <span id="username-check" class="availability-message error-message"></span>
+				    </td>
+				</tr>
+                <!-- Password -->
+                <tr class="flex-row">
+                    <td class="form-group">
+                        <input id="password" type="password" name="password" placeholder=" " class="signup" required />
+                        <label for="password">[[#{signup.password}]]</label>
+                        <span id="password-check" class="error-message"></span>
+                    </td>
+                </tr>
+                <!-- Password Check -->
+                <tr class="flex-row">
+                    <td class="form-group">
+                        <input id="passwordCheck" type="password" name="passwordCheck" placeholder=" " class="signup" required />
+                        <label for="passwordCheck">[[#{signup.password.check}]]</label>
+                        <span id="passwordCheck-check" class="error-message"></span>
+                    </td>
+                </tr>
+                <!-- Email -->
+                <tr class="flex-row">
+                    <td class="form-group">
+                        <input id="email" type="email" name="email" placeholder=" " class="signup" required />
+                        <label for="email">[[#{signup.email}]]</label>
+                        <span id="email-check" class="error-message"></span>
+                    </td>
+                </tr>
+                <!-- Name -->
+                <tr class="flex-row">
+                    <td class="form-group">
+                        <input id="name" type="text" name="name" placeholder=" " class="signup" required />
+                        <label for="name">[[#{signup.name}]]</label>
+                        <span id="name-check" class="error-message"></span>
+                    </td>
+                </tr>
+                <!-- Nickname -->
+                <tr class="flex-row">
+                    <td class="form-group">
+                        <input id="nickname" type="text" name="nickname" placeholder=" " class="signup" required />
+                        <label for="nickname">[[#{signup.nickname}]]</label>
+                        <span id="nickname-check" class="error-message"></span>
+                    </td>
+                </tr>
+                <!-- Date of Birth and Gender -->
+                <tr class="flex-row">
+                    <td class="form-group">
+                        <input id="dob" type="date" name="dob" placeholder=" " class="signup" required />
+                        <span id="dob-check" class="error-message"></span>
+                        <!-- <label for="birthday">생년월일</label> -->
+                    </td>
+				    <td class="form-group">
+				        <select id="gender" name="gender" class="signup" required>
+				            <option value="">[[#{signup.gender}]]</option>
+				            <option value="m">[[#{signup.gender.male}]]</option>
+				            <option value="f">[[#{signup.gender.female}]]</option>
+				            <option value="u">[[#{signup.gender.undisclosed}]]</option>
+				            <option value="o">[[#{signup.gender.other}]]</option>
+				        </select>
+				        <!-- <label for="gender">성별</label> -->
+				    </td>
+                </tr>
+                <!-- Telephone -->
+				<tr class="phone-group flex-row">
+				    <td class="form-group">
+				        <select id="phone1" name="telephone1" class="signup" required>
+				            <option value="010" selected>010</option>
+				            <option value="011">011</option>
+				            <option value="016">016</option>
+				            <option value="017">017</option>
+				            <option value="018">018</option>
+				            <option value="019">019</option>
+				        </select>
+				    </td>
+				    <td class="phone-separator">-</td>
+				    <td class="form-group">
+				        <input id="phone2" type="text" name="telephone2" maxlength="4" class="signup phone-input" required />
+				        <span id="phone2-check" class="error-message"></span>
+				    </td>
+				    <td class="phone-separator">-</td>
+				    <td class="form-group">
+				        <input id="phone3" type="text" name="telephone3" maxlength="4" class="signup phone-input" required />
+				        <span id="phone3-check" class="error-message"></span>
+				    </td>
+				</tr>
+				
+                <!-- Address -->
+            	<tr class="flex-row">
+	            	<td id="zipcode-group" class="form-group">
+            			<input type="text" id="zipcode" name="zipcode" placeholder=" " class="signup" required>
+						<label for="zipcode">[[#{signup.zipcode}]]</label>
+						<!-- <button type="button" id="search-zipcode" class="button" onclick="execDaumPostcode()">[[#{signup.zipcode.search}]]</button> -->
+						<!-- <button type="button" id="search-zipcode" class="button" onclick="execDaumPostcode()"><img src="img/map/search.svg" class="map-icon"></button> -->
+						<button type="button" id="search-zipcode" class="button" onclick="execDaumPostcode()"><span class="material-symbols-outlined" style="color: #000;">search</span></button>
+					</td>
+				</tr>
+				
+				<tr class="flex-row">
+					<td class="form-group">
+						<input type="text" id="address" name="address" placeholder=" " class="signup" required>
+                        <label for="address">[[#{signup.address}]]</label>
+					</td>
+				</tr>
+				
+				<tr class="flex-row">
+					<td class="form-group">
+						<input type="text" id="addressDetail" name="addressDetail" placeholder=" " class="signup">
+						<label for="addressDetail">[[#{signup.addressDetail}]]</label>
+						<span id="addressDetail-check" class="error-message"></span>
+					</td>
+					<td class="form-group">
+						<input type="text" id="addressExtra" name="addressExtra" placeholder=" " class="signup">
+						<label for="addressExtra">[[#{signup.addressExtra}]]</label>
+					</td>
+            	</tr>
+            </table>
+            <div>
+                <button type="submit" class="signup-button button">[[#{signup.signup}]]</button>
+            </div>
+             	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        </div>
+    </form>
+    
+    <th:block th:insert="~{inc/footer.html :: footer}"></th:block>
+    <th:block th:insert="~{inc/asset.html :: templates_js}"></th:block>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+	<script>
+	
+		//유효성 검사 항목과 검사 규칙에 따른 에러 메시지 타임리프 표현식으로 미리 설정	
+	    window.errorSet = {
+	        username: {
+	            length: '[[#{signup.username.length}]]',
+	            format: '[[#{signup.username.format}]]',
+	        },
+	        password: {
+	            empty: '[[#{signup.password.empty}]]',
+	            length: '[[#{signup.password.length}]]',
+	            letter: '[[#{signup.password.english}]]',
+	            number: '[[#{signup.password.number}]]',
+	            special: '[[#{signup.password.special}]]',
+	            format: '[[#{signup.password.format}]]',
+	        },
+	        email: {
+	            length: '[[#{signup.email.length}]]',
+	            format: '[[#{signup.email.format}]]',
+	        },
+	        telephone: {
+	            number: '[[#{signup.telephone.numeric}]]',
+	        },
+	        name: {
+	            length: '[[#{signup.name.length}]]',
+	            format: '[[#{signup.name.format}]]',
+	        },
+	        nickname: {
+	            length: '[[#{signup.nickname.length}]]',
+	            format: '[[#{signup.nickname.format}]]',
+	        },
+	        address: {
+	            length: '[[#{signup.addressDetail.length}]]',
+	        },
+	    };
+	</script>
+	    <script th:src="@{js/signup.js}"></script>
+
+</body>
+</html>

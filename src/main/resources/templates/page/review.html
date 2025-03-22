@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>[[#{menu.review}]]</title>
+	<th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+</head>
+<style>
+	
+	.review-search {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 30px;
+	}
+
+	.search-box {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 15px;	/* 입력창과 버튼 사이 간격 */
+	}
+
+	.search-txt,
+	.search-btn {
+		border-radius: 5px;
+		height: 42px;
+		padding: 3px;
+		font-size: 16px;
+		text-align: center;
+	}
+
+	.search-txt {
+		border: 2px solid #CCCCCC;
+		width: 550px;
+	}
+
+	.search-btn {
+		border: none;
+		width: 120px;
+		font-weight: bold;
+		background-color: #10D0A1;
+		color: white;
+	}
+	
+	.search-btn:hover,
+	.write-btn:hover {
+		color:rgb(100, 116, 128) ; 
+	}
+
+	.review-list {
+		border-collapse: collapse;
+		width: 100%;
+		margin: 20px 0;
+		table-layout: fixed;	/* 열 크기를 고정 */
+		margin-bottom: 40px;
+	}
+		
+	.review-list th:nth-child(1),
+	.review-list td:nth-child(1) {
+		width: 10%;
+	}
+
+	.review-list th:nth-child(2),
+	.review-list td:nth-child(2) {
+		width: 15%;
+	}
+
+	.review-list th:nth-child(3),
+	.review-list td:nth-child(3) {
+		width: 40%;
+	}
+
+	.review-list th:nth-child(4),
+	.review-list td:nth-child(4) {
+		width: 15%;
+	}
+
+	.review-list th:nth-child(5),
+	.review-list td:nth-child(5) {
+		width: 15%;
+	}
+
+	.table-header {
+		background-color: #f4f4f4;
+		text-align: center;
+		font-weight: bold;
+	}
+
+	.table-header th, 
+	.table-body td {
+		padding: 12px 15px;
+		text-align: center;
+	}
+
+	.table-body td {
+		/* 아래쪽만 줄을 넣음 */
+		border-bottom: 1px solid #f4f4f4;
+		/* border-bottom: 1px solid #ADB5BD; */
+	}
+
+	.table-body a {
+		color: black;
+	}
+
+	.table-body a:hover {
+		font-weight: bold;
+		color: #10D0A1;
+	}
+	
+	
+	/* 작성하기 버튼 */
+	.create-review {
+	    display: flex;
+	    justify-content: flex-end; /* 오른쪽 정렬 */
+	}
+	
+	.write-btn {
+		background-color: #10D0A1;
+		color: white;
+		border: none;
+		border-radius: 5px;
+		width: 120px;
+		height: 42px;
+		font-size: 16px;
+		text-align: center;
+		align-items: center;
+		padding: 10px;
+		margin-right: 20px;
+	}
+	
+	.icon-search2,
+	.icon-edit {
+		font-weight: bold;
+	}
+	
+	
+	/* 페이징 버튼*/
+	.custom-button a {
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		font-weight: bold;
+		border-radius: 50%;
+		background: rgba(16, 208, 161, 0.1);
+		color:rgb(100, 116, 128) ;
+		text-align: center;
+		margin: 5px;
+	}
+
+	.custom-button a:hover,
+	.custom-button a.active {
+		background: #10D0A1;
+		color: #fff;
+	}
+	
+</style>
+
+<body>
+	<th:block th:insert="~{inc/header.html :: index_header_menu}"></th:block>
+	<th:block th:insert="~{inc/header.html :: index_header_content_basic(#{menu.review},#{menu.review.desc})}"></th:block>
+	<div class="section services-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-lg-5" data-aos="fade-up" data-aos-delay="">
+					<h3 class="subheading">영양제 리뷰 목록</h3>
+					<h2 class="heading">Supplement Review List</h2>
+				</div>
+			</div>
+
+			<div class="row mb-5">
+				<div class="review-search">
+					<form class="search-box" method="GET" action="/review">
+						<input class="search-txt" type="text" name="keyword" placeholder="검색어를 입력하세요" required>
+						<!--<button class="search-btn" type="submit">
+							<span class="icon-search"> 검색하기</span>
+						</button>-->
+						<button class="search-btn" type="submit">
+							<span class="icon-search2"> 검색하기</span>
+						</button>
+					</form>
+				</div>
+
+				<table th:if="${list != null}" class="review-list">
+					<thead class="table-header">
+						<tr>
+							<th>번호</th>
+							<th>카테고리</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>작성날짜</th>
+						</tr>
+					</thead>
+					<tbody class="table-body">
+						<tr th:each="dto : ${list}">
+							<td th:text="${dto.seq}"></td>
+							<td th:text="${dto.category}"></td>
+							<td>
+								<a th:href="'/viewReview?seq=' + ${dto.seq}" th:text="${dto.title}"></a>
+							</td>
+							<td th:text="${dto.nickname}"></td>
+							<td th:text="${#temporals.format(dto.createDate, 'yyyy-MM-dd')}"></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="create-review">
+					<a href="/addReview" class="write-btn">
+						<span class="icon-edit"> 작성하기</span>
+					</a>
+				</div>
+
+				<div class="row align-items-center py-5">
+					<div class="col-lg-3">
+						<!-- Pagination (1 of 10) -->
+					</div>
+					<div class="col-lg-6 text-center">
+						<div class="custom-pagination custom-button">
+							[(${page})]
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<th:block th:insert="~{inc/footer.html :: footer}"></th:block>
+	<th:block th:insert="~{inc/asset.html :: templates_js}"></th:block>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+
+</script>
+
+</html>

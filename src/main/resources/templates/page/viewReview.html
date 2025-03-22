@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<title>[[#{menu.review}]]</title>
+	<th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+</head>
+<style>
+		
+	html, body {
+	    overflow-x: hidden; /* 좌우 스크롤 방지 */
+	}
+	
+	.review-view {
+		display: flex;
+	    justify-content: center;
+	    align-items: center; 
+	    width: 100%;
+	}
+
+	.review-table {
+		width: 85%;
+	}
+	
+	.review-table th, .review-table td {
+		padding: 15px;
+		border-top: 1px solid #CCCCCC;
+		border-bottom: 1px solid #CCCCCC;	
+	}
+	
+	
+	.review-table th {
+		background-color: #f4f4f4;
+	    width: 15%;  
+	    font-size: 16px;
+		text-align: center;
+	}
+	 
+	.review-table td { 
+		border-left: 1px solid #CCCCCC;
+		width: 75%; 
+	    font-size: 14px; 
+		padding-left: 20px; 
+	}
+
+	.buttons {
+		display: flex;
+		justify-content: space-between; /* 양 끝으로 정렬 */
+		margin-top: 40px;
+		padding: 0 120px;
+	}
+	
+	.back-button {
+	   margin-right: auto;	/* 오른쪽 여백 작동 설정 > 왼쪽 끝 정렬 */
+	}
+		
+	.edit-del-button {
+		display: flex;		/* 버튼들 한 줄로 정렬*/
+		gap: 20px;
+	}
+	
+	.back-btn, 
+	.edit-btn, 
+	.del-btn {
+		display: flex;
+		justify-content: center;
+		text-align: center;
+		align-items: center;
+		width: 120px;
+		height: 42px;
+		font-size: 16px;
+		font-weight: bold;
+		border-radius: 5px;
+	}
+	
+	.del-btn {
+		border: 2px solid #10D0A1; 
+		background-color: white;
+		color:  #10D0A1;
+	}
+	 
+	.back-btn,
+	.edit-btn {
+		border:  none;
+		background-color: #10D0A1;
+		color: white;
+	}
+	
+	.icon-reply,
+	.icon-edit, 
+	.icon-trash {
+		font-weight: bold;
+	}
+	
+	.back-btn:hover,
+	.edit-btn:hover, 
+	.del-btn:hover {
+		color:rgb(100, 116, 128) ; 
+	}
+
+</style>
+<body>
+	<th:block th:insert="~{inc/header.html :: index_header_menu}"></th:block>
+	<th:block th:insert="~{inc/header.html :: index_header_content_basic(#{menu.review},#{menu.review.desc})}"></th:block>
+	<div class="section services-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-lg-5"  data-aos="fade-up" data-aos-delay="0">
+					<h3 class="subheading">리뷰 상세보기</h3>
+					<h2 class="heading">View Review Details</h2>
+				</div>		
+			</div>	
+			
+			<div class="row mb-5">
+				<div class="review-view">
+					<table th class="review-table">
+			           <tr>
+		                	<th>번호</th>
+							<td th:text="${review.seq}"></td>
+		                </tr>
+		                <tr>
+			                <th>작성자</th>
+							<td th:text="${review.nickname}"></td>
+			            </tr>
+		                <tr>
+			                <th>작성시간</th>
+							<td th:text="${#temporals.format(review.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+			            </tr>
+			            <tr>
+		                	<th>제목</th>
+							<td th:text="${review.title}"></td>
+		                </tr>
+		                <tr>
+			                <th>카테고리</th>
+							<td th:text="${review.category}"></td>
+			            </tr>
+		                <tr>  
+			                <th>제품명</th>
+							<td th:text="${review.name}"></td>
+			            </tr>
+		                <tr>
+			                <th>후기</th>
+							<td th:text="${review.content}"></td>
+						</tr>
+			            <tr>
+			                <th>첨부사진</th>
+							<td>
+								<img th:if="${review.image != null}" th:src="@{img/review/{image}(image=${review.image})}"/>
+							</td>
+						</tr>
+					</table>
+				</div>	
+				
+				<div class="buttons">
+					<div class="back-button">
+						<a href="/review" class="back-btn">
+							<span class="icon-reply"> 뒤로가기</span>
+						</a>
+					</div>
+		
+					<div class="edit-del-button">
+						<a th:href="@{/editReview?seq={seq}(seq=${review.seq})}" class="edit-btn"> 
+							<span class="icon-edit"> 수정하기</span>
+						</a>
+						<a th:href="@{/delReview?seq={seq}(seq=${review.seq})}" class="edit-btn">
+							<span class="icon-trash"> 삭제하기</span>
+						</a>
+						<!--<a href="/delReview" class="del-btn">
+							<span class="icon-delete"> 삭제하기</span>
+						</a>-->
+						<!--<a href="/delReview" class="del-btn">
+							<span class="icon-delete_forever"> 삭제하기</span>
+						</a>-->
+					</div>	
+				</div>
+			</div>
+		</div>	
+	</div>
+	
+		<th:block th:insert="~{inc/footer.html :: footer}"></th:block>
+		<th:block th:insert="~{inc/asset.html :: templates_js}"></th:block>
+
+</body>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>	
+
+	</script>
+</html>

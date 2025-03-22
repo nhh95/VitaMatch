@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<title>[[#{menu.category}]]</title>
+	<th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+</head>
+<link rel="stylesheet" th:href="@{css/category.css}" />
+<body>
+	<th:block th:insert="~{inc/header.html :: index_header_menu}"></th:block>
+	<th:block th:insert="~{inc/header.html :: index_header_content_basic(#{menu.category},#{menu.health.desc})}"></th:block>
+	
+	<div class="max_container">
+		<div class="categories-sidebar">
+		    <h3>Categories</h3>
+			    <ul class="categories-list">
+		        <li><a href="" class="category-item" data-category="피로감">피로감</a></li>
+		        <li><a href="" class="category-item" data-category="눈 건강">눈 건강</a></li>
+		        <li><a href="" class="category-item" data-category="피부 건강">피부 건강</a></li>
+		        <li><a href="" class="category-item" data-category="혈관_혈액순환">혈관 & 혈액순환</a></li>
+		        <li><a href="" class="category-item" data-category="간 건강">간 건강</a></li>
+		        <li><a href="" class="category-item" data-category="장 건강">장 건강</a></li>
+		        <li><a href="" class="category-item" data-category="스트레스_수면">스트레스 & 수면</a></li>
+		        <li><a href="" class="category-item" data-category="콜레스테롤">콜레스테롤</a></li>
+		        <li><a href="" class="category-item" data-category="뼈 건강">뼈 건강</a></li>
+		        <li><a href="" class="category-item" data-category="소화_위식도 건강">소화 & 위식도 건강</a></li>
+		        <li><a href="" class="category-item" data-category="혈압">혈압</a></li>
+		        <li><a href="" class="category-item" data-category="운동 능력_근육량">운동 능력 & 근육량</a></li>
+		        <li><a href="" class="category-item" data-category="혈당">혈당</a></li>
+		        <li><a href="" class="category-item" data-category="치아_잇몸">치아 & 잇몸</a></li>
+		        <li><a href="" class="category-item" data-category="면역 기능">면역 기능</a></li>
+		    </ul>
+		</div>
+		
+		<div class="container_category">
+		    <div class="item" th:each="dto : ${list}">
+		    	<a th:href="@{/productInfo(seq=${dto.id})}">
+		        	<img th:src="@{${dto.productImage}}" alt="Product Image">
+		        </a>
+		        <div class="product-name" th:text="${dto.productName}"></div>
+		        <div class="product-company" th:text="${dto.productcompany}"></div>
+		    </div>
+		</div>
+		
+		<div class="paging" th:if="${totalPages > 1}">
+		    <ul>
+		        <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+		            th:classappend="${i == currentPage} ? 'active'">
+		            <a th:href="@{/ingredient(category=${category}, page=${i})}" th:text="${i + 1}"></a>
+		        </li>
+		    </ul>
+		</div>
+		
+	</div>
+	
+	<th:block th:insert="~{inc/footer.html :: footer}"></th:block>
+	<th:block th:insert="~{inc/asset.html :: templates_js}"></th:block>
+	
+	<script th:src="@{js/category.js}"></script>
+</body>
+</html>

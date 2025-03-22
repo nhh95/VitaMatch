@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<title>[[#{menu.recommend}]]</title>
+	<th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+	<link rel="stylesheet" th:href="@{css/recommend.css}">
+</head>
+<body style="-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none">
+	<th:block th:insert="~{inc/header.html :: index_header_menu}"></th:block>
+	<th:block th:insert="~{inc/header.html :: index_header_content_basic(#{menu.recommend},#{menu.recommend.desc})}"></th:block>
+	
+	
+	<div class="survey-container">
+		<div class="section services-section">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-lg-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="">
+						<h3 class="subheading">RECOMMEND INGREDIENT</h3>
+						<h2 class="heading">건강 상태에 맞는 맞춤 영양제 성분</h2>
+					</div>		
+				</div>
+					<form method="GET" action="/recommend" onsubmit="return validateForm()">
+					<div class="survey-ingredient">
+						<div class="attention-content">각 항목당 1개만 선택 가능</div>
+						<label for="gender" class="survey-sub-title">성별<span>*성별 선택 필수</span></label>
+						<div class="survey-gender">
+							<div class="survey-radio-btn">
+								<input id="gender-man" type="radio" name="gender" value="m">
+								<label for="gender-man">남자</label>
+							</div>
+							<div class="survey-radio-btn">
+								<input id="gender-woman" type="radio" name="gender" value="f">
+								<label for="gender-woman">여자</label>
+							</div>
+						</div>
+
+						<label for="age" class="survey-sub-title">연령대<span>*연령대 선택 필수</span></label>
+						<div class="survey-age">
+							<div class="survey-radio-btn">
+								<input id="age1" type="radio" name="age" value="1">
+								<label for="age1">10대</label>
+							</div>
+							<div class="survey-radio-btn">
+								<input id="age2" type="radio" name="age" value="2">
+								<label for="age2">20대</label>
+							</div>
+							<div class="survey-radio-btn">
+								<input id="age3" type="radio" name="age" value="3">
+								<label for="age3">30대</label>
+							</div>
+							<div class="survey-radio-btn">
+								<input id="age4" type="radio" name="age" value="4">
+								<label for="age4">40대</label>
+							</div>
+							<div class="survey-radio-btn">
+								<input id="age5" type="radio" name="age" value="5">
+								<label for="age5">50대</label>
+							</div>
+							<div class="survey-radio-btn">
+								<input id="age6" type="radio" name="age" value="6">
+								<label for="age6">60대 이상</label>
+							</div>
+						</div>
+						
+						<label for="checkup" class="survey-sub-title">건강검진 관련</label>
+							<div class="survey-checkup">
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="checkup1" name="healthSeq" value="1">
+							    <label for="checkup1" class="checkbox-label">간 건강</label>
+							</div>
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="checkup2" name="healthSeq" value="2">
+							    <label for="checkup2" class="checkbox-label">피로감</label>
+							</div>
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="checkup3" name="healthSeq" value="3">
+							    <label for="checkup3" class="checkbox-label">혈관 및 혈액순환</label>
+							</div>
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="checkup4" name="healthSeq" value="4">
+							    <label for="checkup4" class="checkbox-label">콜레스테롤</label>
+							</div>
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="checkup5" name="healthSeq" value="5">
+							    <label for="checkup5" class="checkbox-label">혈당 관리</label>
+							</div>
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="checkup6" name="healthSeq" value="6">
+							    <label for="checkup6" class="checkbox-label">혈압 관리</label>
+							</div>
+						</div>
+						
+						<label for="organ" class="survey-sub-title">주요 장기 관련</label>
+						<div class="survey-organ">
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="organ1" name="organSeq" value="1">
+							    <label for="organ1" class="checkbox-label">눈 건강</label>
+							</div>
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="organ2" name="organSeq" value="2">
+							    <label for="organ2" class="checkbox-label">뼈 건강</label>
+							</div>
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="organ3" name="organSeq" value="3">
+							    <label for="organ3" class="checkbox-label">장 건강</label>
+							</div>
+						</div>
+						
+						<label for="daily" class="survey-sub-title">일상생활 관련</label>
+						<div class="survey-daily">
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="daily1" name="dailySeq" value="1">
+							    <label for="daily1" class="checkbox-label">운동 능력 및 근육량</label>
+							</div>
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="daily2" name="dailySeq" value="2">
+							    <label for="daily2" class="checkbox-label">면역 기능</label>
+							</div>
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="daily3" name="dailySeq" value="3">
+							    <label for="daily3" class="checkbox-label">소화 및 위식도 건강</label>
+							</div>
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="daily4" name="dailySeq" value="4">
+							    <label for="daily4" class="checkbox-label">스트레스 및 수면</label>
+							</div>
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="daily5" name="dailySeq" value="5">
+							    <label for="daily5" class="checkbox-label">치아 및 잇몸</label>
+							</div>
+							<div class="survey-ceckbox-btn">
+							    <input type="checkbox" id="daily6" name="dailySeq" value="6">
+							    <label for="daily6" class="checkbox-label">피부 건강</label>
+							</div>
+						</div>
+						<div class="survey-btn">
+							<button type="button" id="cleanBtn" class="clean-btn" onclick="resetSurvey();"><img src="img/recommend/cleanIcon.svg" class="clean-icon">설문 항목 초기화</button>
+							<button type="submit" class="recommend-btn"><img src="img/recommend/recommendIcon.svg" class="recommend-icon">영양제 추천 받기</button>
+						</div>
+					</div>
+					</form>
+			</div> <!-- container -->
+		</div>
+	</div>
+	
+	<script>
+		
+		//성별이랑 연령대 선택 안할경우 ------------------------------------------------
+		function validateForm() {
+		    var gender = document.querySelector('input[name="gender"]:checked');
+		    var age = document.querySelector('input[name="age"]:checked');
+
+		    // 성별과 연령대가 선택되지 않은 경우 경고 메시지 표시
+		    if (!gender || !age) {
+		        alert("성별과 연령대를 선택해주세요.");
+				// 페이지를 맨 위로 스크롤
+				window.scrollTo({
+				    top: 550,
+				    behavior: 'smooth'
+				});
+		        return false;  // 폼 제출을 막고 알림을 표시
+		    }
+
+		    // 성별과 연령대가 선택된 경우, 폼을 제출하도록 허용
+		    return true;
+		}
+		
+		// 초기화 버튼 누르면 초기화 되고 화면 위치 맨 위로 ----------------------------
+		/*
+		function resetSurvey() {
+		    // 라디오 버튼 초기화
+		    const radioButtons = document.querySelectorAll('input[type="radio"]');
+		    radioButtons.forEach(radio => {
+				
+		        radio.checked = false;
+		    });
+
+		    // 체크박스 초기화
+		    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		    checkboxes.forEach(checkbox => {
+		        checkbox.checked = false;
+		    });
+			
+			// 페이지를 맨 위로 스크롤
+			window.scrollTo({
+			    top: 550,       // 상단으로 이동
+			    behavior: 'smooth'  // 부드럽게 이동
+			});
+
+		}
+		*/
+		// 체크박스 하나씩만 선택되게 -----------------------------
+		const checkupCheckboxes = document.querySelectorAll('.survey-checkup input[type="checkbox"]');
+		const organCheckboxes = document.querySelectorAll('.survey-organ input[type="checkbox"]');
+		const dailyCheckboxes = document.querySelectorAll('.survey-daily input[type="checkbox"]');
+		
+		// 건강검진 관련 체크박스 그룹에서 하나만 선택 가능하게 하기
+		checkupCheckboxes.forEach(checkbox => {
+		  checkbox.addEventListener('change', function () {
+		    checkupCheckboxes.forEach(otherCheckbox => {
+		      if (otherCheckbox !== checkbox) {
+		        otherCheckbox.checked = false; // 다른 체크박스를 해제
+		      }
+		    });
+		  });
+		});
+
+		// 주요 장기 관련 체크박스 그룹에서 하나만 선택 가능하게 하기
+		organCheckboxes.forEach(checkbox => {
+		  checkbox.addEventListener('change', function () {
+		    organCheckboxes.forEach(otherCheckbox => {
+		      if (otherCheckbox !== checkbox) {
+		        otherCheckbox.checked = false; // 다른 체크박스를 해제
+		      }
+		    });
+		  });
+		});
+		
+		// 건강검진 관련 체크박스 그룹에서 하나만 선택 가능하게 하기
+		dailyCheckboxes.forEach(checkbox => {
+		  checkbox.addEventListener('change', function () {
+		    dailyCheckboxes.forEach(otherCheckbox => {
+		      if (otherCheckbox !== checkbox) {
+		        otherCheckbox.checked = false; // 다른 체크박스를 해제
+		      }
+		    });
+		  });
+		});
+		
+		// 초기화 버튼 활성화/비활성화 -------------------------------------------
+		// 페이지 로드 시 체크박스 및 라디오 버튼 상태 확인
+		document.addEventListener('DOMContentLoaded', function () {
+		    // "설문 항목 초기화" 버튼 비활성화
+		    toggleResetButton();
+		    
+		    // 모든 체크박스와 라디오 버튼에 이벤트 리스너 추가
+		    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		    const radioButtons = document.querySelectorAll('input[type="radio"]');
+		    
+		    // 체크박스와 라디오 버튼에 대한 이벤트 처리
+		    checkboxes.forEach(checkbox => {
+		        checkbox.addEventListener('change', toggleResetButton);
+		    });
+
+		    radioButtons.forEach(radio => {
+		        radio.addEventListener('change', toggleResetButton);
+		    });
+		});
+
+		// 체크박스와 라디오 버튼 상태에 따라 "설문 항목 초기화" 버튼 활성화/비활성화
+		function toggleResetButton() {
+		    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		    const radioButtons = document.querySelectorAll('input[type="radio"]');
+		    const cleanBtn = document.getElementById('cleanBtn');
+
+		    // 체크박스나 라디오 버튼 중 하나라도 선택되었으면 버튼 활성화
+		    const isAnyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+		    const isAnyRadioSelected = Array.from(radioButtons).some(radio => radio.checked);
+
+		    if (isAnyChecked || isAnyRadioSelected) {
+		        cleanBtn.disabled = false; // 버튼 활성화
+				cleanBtn.style.cursor = 'pointer';
+				cleanBtn.style.backgroundColor = 'var(--bs-light)'
+		    } else {
+		        cleanBtn.disabled = true; // 버튼 비활성화
+				cleanBtn.style.cursor = 'not-allowed';
+				cleanBtn.style.backgroundColor = '#c4c4c4'
+		    }
+		}
+
+		// 설문 항목 초기화 함수
+		function resetSurvey() {
+		    const cleanBtn = document.getElementById('cleanBtn');
+		    
+		    // "설문 항목 초기화" 버튼이 비활성화 상태일 경우
+
+		        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		        const radioButtons = document.querySelectorAll('input[type="radio"]');
+		        
+		        // 모든 체크박스 해제
+		        checkboxes.forEach(checkbox => checkbox.checked = false);
+		        // 모든 라디오 버튼 선택 해제
+		        radioButtons.forEach(radio => radio.checked = false);
+				
+				// 페이지를 맨 위로 스크롤
+				window.scrollTo({
+				    top: 550,       // 상단으로 이동
+				    behavior: 'smooth'  // 부드럽게 이동
+				});
+
+		        // 버튼 상태 업데이트
+		        toggleResetButton();
+		}
+		
+		
+	</script>
+
+	<th:block th:insert="~{inc/footer.html :: footer}"></th:block>
+	<th:block th:insert="~{inc/asset.html :: templates_js}"></th:block>
+</body>
+</html>

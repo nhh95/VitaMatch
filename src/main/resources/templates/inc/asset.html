@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <th:block th:fragment="templates_css">
+        <link rel="stylesheet" type="text/css" th:href="@{templates/font/icomoon/style.css}" />   
+        <link rel="stylesheet" type="text/css" th:href="@{templates/font/flaticon/fonts/flaticon.css}" />   
+        <link rel="stylesheet" type="text/css" th:href="@{templates/css/aos.css}" />   
+        <link rel="stylesheet" type="text/css" th:href="@{templates/css/flatpickr.min.css}" />   
+        <link rel="stylesheet" type="text/css" th:href="@{templates/css/glightbox.min.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{templates/css/style.css}" />   
+        <link rel="stylesheet" type="text/css" th:href="@{templates/css/tiny-slider.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{css/root.css}" />   
+	
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=KoHo:wght@400;600;700&display=swap" rel="stylesheet">
+    </th:block>
+</head>
+<body>
+    <th:block th:fragment="templates_js">
+    	<script th:src="@{templates/js/bootstrap.bundle.min.js}"></script>
+    	<script th:src="@{templates/js/tiny-slider.js}"></script>
+    	<script th:src="@{templates/js/aos.js}"></script>
+    	<script th:src="@{templates/js/navbar.js}"></script>
+    	<script th:src="@{templates/js/counter.js}"></script>
+    	<script th:src="@{templates/js/flatpickr.js}"></script>
+    	<script th:src="@{templates/js/glightbox.min.js}"></script>
+    	<script th:src="@{templates/js/custom.js}"></script>
+    	
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    	<script th:src="@{js/root.js}"></script>
+    </th:block>
+</body>
+</html>

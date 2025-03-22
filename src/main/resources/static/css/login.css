@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.login-form-box {
+    position: relative;
+	margin-left: auto;
+	margin-right: auto;
+    width: 400px;
+    height: 250px;
+}
+
+body {
+	box-sizing: border-box;
+}
+
+.font-size-20 {
+	font-size: 20px;
+}
+
+.font-size-30 {
+	font-size: 30px;
+}
+
+
+.font-size-40 {
+	font-size: 40px;
+}
+
+.font-koho {
+	font-family: 'KoHo';
+}
+
+.font-bold {
+	font-weight: bold;
+}
+
+.border-round {
+	border-radius: 10px;
+}
+
+.border-thin {
+	border: 1px solid;
+}
+
+.border-gray {
+	border-color: gray;
+}
+
+.stretch {
+	width: 100%;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.color-project {
+	background-color: #10D0A1;
+}
+
+.text-color-project {
+	color: #10D0A1;
+}
+
+.text-color-white {
+	color: white;
+}
+
+.border-none {
+	border: 1px solid;
+}
+
+input.login {
+	position: relative;
+    width: 390px;
+	height: 55px;
+	left: 3px;
+    padding: 15px 5px 5px 10px;
+    font-size: 20px;
+	color: #444;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    outline: none;
+	margin-bottom: 10px;
+}
+
+label {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 20px;
+    color: #AAA;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.login-button {
+    margin: 1px 0 0 1px;
+    width: 396px;
+    height: 55px;
+}
+
+<!--/* 로그인 폼(이메일 또는 비밀번호 창)에 포커스가 갈 시 placeholder 텍스트가 이동 */-->
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    top: 0px;
+    left: 15px;
+    font-size: 15px;
+    color: #10D0A1;
+}
+
+.flex {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 390px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5px 5px 0;
+}
+
+div.wrapper {
+	position: relative;
+	width: 390px;
+	top: 50px;	
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.empty-div {
+	position: relative;
+	height: 50px;
+	pointer-events: none;
+}

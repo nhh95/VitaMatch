@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<title>[[#{menu.category}]]</title>
+	<th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+</head>
+<link rel="stylesheet" th:href="@{css/shoppingCart.css}" />
+<body>
+	<th:block th:insert="~{inc/header.html :: index_header_menu}"></th:block>
+	<th:block th:insert="~{inc/header.html :: index_header_content_basic(#{shop.shoppingCart},#{shop.shoppingCart.desc})}"></th:block>
+	
+	<table class="item" border="1" cellspacing="0" cellpadding="5">
+	    <thead>
+	        <tr>
+	        	<td></td>
+	            <th>제품 사진</th>
+	            <th>제품명</th>
+	            <th>회사명</th>
+	            <th>가격</th>
+	            <th>수량</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr th:each="dto : ${shoppingCartItem}">
+				<td>
+				    <button 
+				        th:data-product-id="${dto.id}" 
+				        class="cart-toggle-btn"
+				        onclick="toggleCart(this)">
+				        <span class="check-icon" style="display: none;">✔</span>
+				    </button>
+				</td>
+
+	            <td><img th:src="${dto.productImage}" alt="Product Image" width="250"></td>
+	            <td th:text="${dto.productName}"></td>
+	            <td th:text="${dto.CompanyName}"></td>
+	            <td th:text="${dto.price}"></td>
+	            <td>
+	                <input type="number" min="1" max="100" th:value="1" />
+	            </td>
+	        </tr>
+	    </tbody>
+	</table>
+	<button class="product_del">삭제하기</button>
+	<button class="product_buy">구매하기</button>
+
+	
+	
+	<th:block th:insert="~{inc/footer.html :: footer}"></th:block>
+	<th:block th:insert="~{inc/asset.html :: templates_js}"></th:block>
+	
+	<script th:src="@{js/category.js}"></script>
+	<script>
+	    function toggleCart(button) {
+	        const isSelected = button.classList.contains('selected');
+	        
+	        if (isSelected) {
+	            // 선택 취소
+	            button.classList.remove('selected');
+	            button.querySelector('.check-icon').style.display = 'none';
+	        } else {
+	            // 선택
+	            button.classList.add('selected');
+	            button.querySelector('.check-icon').style.display = 'block';
+	        }
+	    }
+	</script>
+</body>
+</html>

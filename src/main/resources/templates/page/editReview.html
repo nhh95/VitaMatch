@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<title>[[#{menu.review}]]</title>
+	<th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+	<meta name="_csrf" th:content="${_csrf.token}" />
+	<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+</head>
+<style>
+		
+	html, body {
+	    overflow-x: hidden; /* 좌우 스크롤 방지 */
+	}
+	
+	.review-edit {
+		display: flex;
+	    justify-content: center;
+	    align-items: center; 
+	    width: 100%;
+	}
+	
+	.review-form {
+		width: 100%;
+	}
+	
+	/*
+	.review-form {
+		display: flex;		
+		position: relative;
+		width: 100%;
+		border-radius: 2px;
+	}
+	*/
+	
+	.review-form th, .review-form td { 
+	    padding: 15px;
+		border-top: 1px solid #CCCCCC;
+		border-bottom: 1px solid #CCCCCC;
+	}
+	
+	.review-form th {
+		background-color: #f4f4f4;
+	    width: 15%;
+	    font-size: 16px;
+	    text-align: center;
+	}
+
+	.review-form td {
+		border-left: 1px solid #CCCCCC;
+	    width: 75%;
+	    font-size: 14px; 
+		padding-left: 15px; 
+	}
+	
+	#seq, #nickname, #createDate, #title, #category, #name {
+		border: 1px solid  #CCCCCC;
+		border-radius: 3px;
+		width: 900px;
+		height: 35px;
+		padding-left: 15px;	
+	}
+	
+	#content {
+		border: 1px solid  #CCCCCC;
+		border-radius: 3px;
+		width: 900px;
+		padding-top: 15px;
+		padding-left: 15px;	
+		overflow-y: scroll;
+	}
+	
+	.buttons {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 40px;
+		gap: 850px;
+	}
+	
+	.back-btn, .save-btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		width: 110px;
+		height: 40px;
+		font-size: 16px;
+		font-weight: bold;	
+		border-radius: 5px;
+		padding: 5px;
+	}
+	
+	.back-btn {
+		border: 2px solid #10D0A1;
+		background-color: white; 
+		color:  #10D0A1;
+	}
+	
+	.save-btn {
+		border:  none;
+		background-color: #10D0A1;
+		color: white;
+	}
+	
+	.icon-reply,
+	.icon-edit {
+		font-weight: bold;
+	}
+	
+	.back-btn:hover, 
+	.save-btn:hover {
+		color:rgb(100, 116, 128) ; 
+	}
+	
+</style>
+<body>
+	<th:block th:insert="~{inc/header.html :: index_header_menu}"></th:block>
+	<th:block th:insert="~{inc/header.html :: index_header_content_basic(#{menu.review},#{menu.review.desc})}"></th:block>
+	<div class="section services-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-lg-5"  data-aos="fade-up" data-aos-delay="">
+					<h3 class="subheading">리뷰 수정하기</h3>
+					<h2 class="heading">Edit Supplement Review</h2>
+				</div>		
+			</div>	
+			
+			<div class="row mb-5">
+				<div class="review-edit">
+					<form class="reviewform" method="POST" action="/editReview" enctype="multipart/form-data">
+						<input type="hidden" name="seq" th:value="${review.seq}">
+						<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+						<input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}" />
+						<table class="review-form">
+							<tr>
+			                	<th>번호</th>
+								<td><input type="text" name="seq" id="seq" th:value="${review.seq}" disabled /></td>
+			                </tr>
+			                <tr>
+				                <th>작성자</th>
+								<td><input type="text" name="nickname" id="nickname" th:value="${review.nickname}" disabled /></td>
+				            </tr>
+			                <tr>
+				                <th>작성시간</th>
+								<td><input type="text" name="createDate" id="createDate" th:value="${#temporals.format(review.createDate, 'yyyy-MM-dd HH:mm')}" disabled></td>
+				            </tr>
+				            <tr>
+			                	<th> 제목</th>
+			                	<td><input type="text" name="title" id="title" th:value="${review.title}" /></td>
+			                <tr>
+				                <th>카테고리</th>
+								<td>
+									<select name="category" id="category" required>
+										<option value="비타민A" th:selected="${review.category == '비타민A'}">비타민A</option>
+										<option value="비타민B" th:selected="${review.category == '비타민B'}">비타민B</option>
+										<option value="비타민C" th:selected="${review.category == '비타민C'}">비타민C</option>
+										<option value="비타민D" th:selected="${review.category == '비타민D'}">비타민D</option>
+										<option value="비타민B6" th:selected="${review.category == '비타민B6'}">비타민B6</option>
+										<option value="비타민K" th:selected="${review.category == '비타민K'}">비타민K</option>
+										<option value="비타민E" th:selected="${review.category == '비타민E'}">비타민E</option>
+										<option value="비타민B3" th:selected="${review.category == '비타민B3'}">비타민B3</option>
+										<option value="비타민B2" th:selected="${review.category == '비타민B2'}">비타민B2</option>
+										<option value="비타민B12" th:selected="${review.category == '비타민B12'}">비타민B12</option>
+										<option value="오메가3" th:selected="${review.category == '오메가3'}">오메가3</option>
+										<option value="아연" th:selected="${review.category == '아연'}">아연</option>
+										<option value="마그네슘" th:selected="${review.category == '마그네슘'}">마그네슘</option>
+										<option value="엽산" th:selected="${review.category == '엽산'}">엽산</option>
+										<option value="아르기닌" th:selected="${review.category == '아르기닌'}">아르기닌</option>
+										<option value="철분" th:selected="${review.category == '철분'}">철분</option>
+										<option value="루테인" th:selected="${review.category == '루테인'}">루테인</option>
+										<option value="칼슘" th:selected="${review.category == '칼슘'}">칼슘</option>
+										<option value="유산균" th:selected="${review.category == '유산균'}">유산균</option>
+										<option value="홍삼" th:selected="${review.category == '홍삼'}">홍삼</option>
+										<option value="밀크씨슬" th:selected="${review.category == '밀크씨슬'}">밀크씨슬</option>
+										<option value="칼륨" th:selected="${review.category == '칼륨'}">칼륨</option>
+										<option value="콜라겐" th:selected="${review.category == '콜라겐'}">콜라겐</option>
+										<option value="단백질" th:selected="${review.category == '단백질'}">단백질</option>
+										<option value="효소" th:selected="${review.category == '효소'}">효소</option>
+										<option value="기타" th:selected="${review.category == '기타'}">기타</option>
+									</select>
+								</td>
+				            </tr>
+			                <tr>
+				                <th>제품명</th>
+								<td><input type="text" name="name" id="name" th:value="${review.name}" /></td>
+				            </tr>
+							<tr>
+				                <th>후기</th>
+								<td>
+									<textarea name="content" id="content" rows="10" th:text="${review.content}"></textarea>
+								</td>
+							</tr>
+				            <tr>
+				                <th>첨부사진</th>
+								<td>
+									<img th:if="${review.image != null}" th:src="@{img/review/{image}(image=${review.image})}"/>
+								</td>
+				            </tr>
+			                <!--<tr>
+				                <th>평점</th>
+				                 <td>5</td>
+				            </tr>-->
+						</table>
+				
+		
+						<div class="buttons">
+							<div class="back-button">
+								<a href="/review" class="back-btn">
+									<span class="icon-reply"> 뒤로가기</span>
+								</a>
+							</div>
+							<div class="save-button">
+								<button type="submit" class="save-btn">
+									<span class="icon-edit"> 저장하기</span>
+								</button>
+							</div>
+						</div>
+					</form>		
+				</div>
+			</div>
+		</div>	
+	</div>
+	
+		<th:block th:insert="~{inc/footer.html :: footer}"></th:block>
+		<th:block th:insert="~{inc/asset.html :: templates_js}"></th:block>
+
+</body>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>	
+
+	</script>
+</html>

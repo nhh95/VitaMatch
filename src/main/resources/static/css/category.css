@@ -1,0 +1,126 @@
+.max_container {
+    min-height: 1062px;
+}
+.categories-sidebar {
+	margin-top: 3%;
+	padding-left: 15%;
+	float: left;
+       width: 20%;
+}
+.categories-sidebar h3 {
+	margin-bottom: 25px;
+}
+.categories-list {
+    list-style: none;
+    padding: 0;
+    width: 300px;
+}
+.categories-list li {
+    margin-bottom: 10px;
+}
+.categories-list li a {
+    text-decoration: none; 
+    font-size: 17px;
+}
+.categories-list li a:hover {
+    font-size: 20px;
+    color : cornflowerblue;
+}
+
+.container_category {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 20px;
+    width: 65%;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 15px;
+    position: relative;
+    top: 54px;
+}
+
+.container_category .item {
+    flex: 1 1 calc(30% - 20px); 
+    max-width: calc(30% - 20px);
+    padding: 33px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.container_category .item img {
+    max-width: 100%;
+    height: 193px;
+    width: 193px;
+    margin-bottom: 10px; 
+}
+
+.container_category .item .product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.container_category .item .product-company {
+    font-size: 14px;
+    color: #666;
+}
+.paging ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center !important;
+    margin: 0 auto;
+    padding-top: 5rem !important;
+    padding-bottom: 3rem !important;
+}
+
+.paging li {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 700;
+    border-radius: 50%;
+    background: rgba(16, 208, 161, 0.1);
+    color: #10D0A1;
+    text-align: center;
+    margin: 0 5px;
+}
+
+.paging li a {
+    text-decoration: none;
+    background-color: #E8FBF6; 
+    color: #10D0A1;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.paging li a:hover {
+    background-color: #10D0A1;
+    color: white;
+}
+
+.paging li.active a {
+    background-color: #10D0A1; 
+    color: white;
+    pointer-events: none; 
+}
+
+.paging li {
+    width: 40px;
+    height: 40px;
+    text-align: center; 
+}
+.categories-list li a.selected {
+    font-size: 20px;
+    color: cornflowerblue; 
+    font-weight: bold; 
+}

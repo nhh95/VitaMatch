@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="_csrf" th:content="${_csrf.token}" />
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+
+<title>[[#{menu.chatAI}]]</title>
+<th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+<link rel="stylesheet" th:href="@{css/chatAI.css}" />
+</head>
+<style>
+	
+	
+	
+</style>
+<body>
+	<!-- 채팅 아이콘 -->
+	<th:block th:fragment = "chatAIImg">
+		<img src="/img/chatAI/chatAI.png" id="chatAIImg">
+	</th:block>
+
+	<th:block th:fragment = "chatAI">
+		<form method="POST" action="/api/send">
+			<div class ="chatAI">
+				<div class = "chatAI_Box">
+					<div class="close">
+						<img src="/img/chatAI/close.png" id="chat_close">
+					</div>
+					<div class="AI_chatting">
+						<div class="chatting_inner">
+							<span  class="chatting_inner_text">자주 찾는 페이지</span>
+							<a class="chatting_inner_link" href="/survey" target="_blank">영양제 추천</a>
+							<a class="chatting_inner_link" href="/ingredient?category=비타민A" target="_blank">카테고리별 제품</a>
+							<a class="chatting_inner_link" href="/map" target="_blank">약국 지도</a>						
+						</div>
+						<div class="query_Box"></div>
+					</div>
+					
+					<div class="chatAI_Text">
+						<input type="text" class="ai_text" placeholder="질문을 입력하세요.">
+						<button id="ai_btn" type="button">입력</button>
+					</div>				
+				</div>
+			</div>
+		</form>
+	</th:block>
+</body>
+<script>
+	
+	
+</script>
+</html>

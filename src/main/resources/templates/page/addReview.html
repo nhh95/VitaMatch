@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<title>[[#{menu.review}]]</title>
+	<th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+	<meta name="_csrf" th:content="${_csrf.token}" />
+	<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+</head>
+<style>
+		
+	html, body {
+	    overflow-x: hidden; /* 좌우 스크롤 방지 */
+	}
+	
+	.review-add {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.review-form {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.review-form th, 
+	.review-form td {
+		display: block;
+		padding-bottom: 8px;
+		font-size: 16px;
+	}
+
+	.review-form td {
+		margin-bottom: 20px;
+	}
+	
+	#nickname, #title, #category, #name, #content, #image {
+		border: 1px solid #CCCCCC;
+		border-radius: 5px;	
+	}
+	
+	#nickname, #title, #name, #category, #image, #content {
+		width: 700px;
+		height: 35px;
+		padding-left: 20px; 
+	}
+	
+	/*
+	#category {
+		width: 250px;
+		height: 35px;
+		text-align: center;
+	}
+	*/
+	
+	#content {
+		width:700px;
+		padding: 20px;
+		padding-left: 20px; 
+		overflow-y: scroll;
+	}
+	
+	#image {
+		width: 584px;
+		height: 40px;
+		text-align: center;
+		margin: 0 auto; 
+		padding-top: 4px;
+	}
+	
+	.upload-btn {
+		/* border: none;
+		background-color: #10D0A1;
+		color: white; */
+		border: 2px solid #10D0A1; 
+		background-color: white;
+		color:  #10D0A1;
+		width: 110px;
+		height: 35px;
+		text-align: center;
+		border-radius: 5px;
+		padding: 3px;
+		font-weight: bold;	
+		font-size: 14px;
+	}
+	
+	.buttons {
+	   display: flex;
+	   justify-content: center;
+	   align-items: center;
+	   margin-top: 30px;
+	   gap: 440px;
+	}
+
+	.back-btn, .save-btn {
+	   display: flex;
+	   justify-content: center;
+	   align-items: center;
+	   text-align: center;
+	   width: 120px;
+	   height: 40px;
+	   font-size: 16px;
+	   border-radius: 5px;
+	   padding: 5px;
+	}
+		
+	.back-btn, .save-btn {
+		border:  none;
+		background-color: #10D0A1;
+		color: white;
+	}
+	
+	.icon-upload,
+	.icon-reply,
+	.icon-save {
+		font-weight: bold;
+	}
+	
+	.upload-btn :hover,
+	.back-btn:hover, 
+	.save-btn:hover {
+		color:rgb(100, 116, 128) ; 
+	}
+		
+
+</style>
+<body>
+	<th:block th:insert="~{inc/header.html :: index_header_menu}"></th:block>
+	<th:block th:insert="~{inc/header.html :: index_header_content_basic(#{menu.review},#{menu.review.desc})}"></th:block>
+	<div class="section services-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-lg-5"  data-aos="fade-up" data-aos-delay="0">
+					<h3 class="subheading">리뷰 작성하기</h3>
+					<h2 class="heading">Write Supplement Review</h2>
+				</div>		
+			</div>	
+			<div class="review-add">
+				<form action="/addReview" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+					<input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}" />
+				<table class="review-form">
+					<tr>
+	                	<th>작성자</th>
+						<td>
+							<input type="text" name="nickname" id="nickname" th:value="${nickname}" disabled /> 
+						</td>
+	                </tr>
+		           	<tr>
+	                	<th>게시글 제목</th>
+	                	<td><input type="text" name="title" id="title" required></td>
+	                </tr>
+	                <tr>
+		                <th>카테고리</th>
+		                <td>
+		                	<select name="category" id="category" required>
+								<option value="비타민A" selected>비타민A</option>
+								<option value="비타민B">비타민B</option>
+								<option value="비타민C">비타민C</option>
+								<option value="비타민D">비타민D</option>
+								<option value="비타민B6">비타민B6</option>
+								<option value="비타민K">비타민K</option>
+								<option value="비타민E">비타민E</option>
+								<option value="비타민B3">비타민B3</option>
+								<option value="비타민B2">비타민B2</option>
+								<option value="비타민B12">비타민B12</option>
+								<option value="오메가3">오메가3</option>
+								<option value="아연">아연</option>
+								<option value="마그네슘">마그네슘</option>
+								<option value="엽산">엽산</option>
+								<option value="아르기닌">아르기닌</option>
+								<option value="철분">철분</option>
+								<option value="루테인">루테인</option>
+								<option value="칼슘">칼슘</option>
+								<option value="유산균">유산균</option>
+								<option value="홍삼">홍삼</option>
+								<option value="밀크씨슬">밀크씨슬</option>
+								<option value="칼륨">칼륨</option>
+								<option value="콜라겐">콜라겐</option>
+								<option value="단백질">단백질</option>
+								<option value="효소">효소</option>
+								<option value="기타">기타</option>
+					        </select>
+		                </td>
+						<!--
+						<td>
+							<select name="category" id="category">
+								<c:forEach items="${clist}" var="cdto">
+								<option value="${cdto.seq}" 
+									data-img="${cdto.img}">${cdto.name}</option>
+								</c:forEach>
+							</select>
+						</td>
+						-->
+		            </tr>
+	                <tr>
+		                <th>제품명</th>
+		                <td><input type="text" name="name" id="name" required></td>
+		            </tr>
+					<tr>
+	                	<th>후기</th>
+	                	<td><textarea name="content" id="content" rows="10" required></textarea></td>
+	                </tr>
+		            <tr>
+		                <th>첨부사진</th>
+		                <td>
+							<input type="file" name="image" id="image" multiple="multiple" />
+							<!--<input type="file" name="image" id="image" multiple="multiple"/> -->
+		                	<!--<button type="submit" class="upload-btn">
+								<span class="icon-upload"> 첨부하기</span>
+							</button>-->
+		                </td>
+		            </tr>    					
+				</table>
+			</div>
+			
+			<div class="buttons">
+				<div class="back-button">
+					<a href="/review" class="back-btn">
+						<span class="icon-reply"> 뒤로가기</span>
+					</a>
+				</div>
+				<div class="save-button">
+					<button type="submit" class="save-btn">
+						<span class="icon-save"> 저장하기</span>
+					</button>
+				</div>
+			</div>	
+		</div>	
+	</div>
+	
+		<th:block th:insert="~{inc/footer.html :: footer}"></th:block>
+		<th:block th:insert="~{inc/asset.html :: templates_js}"></th:block>
+
+</body>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>	
+
+	</script>
+</html>

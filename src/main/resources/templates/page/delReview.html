@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<title>[[#{menu.review}]]</title>
+	<th:block th:insert="~{inc/asset.html :: templates_css}"></th:block>
+	<meta name="_csrf" th:content="${_csrf.token}" />
+	<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+</head>
+<style>
+	/*
+	.review-del {
+		display: flex;		
+		position: relative;
+		width: 100%;
+		border-radius: 2px;
+	}
+	*/
+	
+	.del-comment {
+		font-size: 18px;
+		text-align: center;
+	}
+
+	.buttons {
+		margin-top: 100px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 50px;
+		gap: 30px;
+	}
+	
+	.back-btn,
+	.del-btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		width: 120px;
+		height: 42px;
+		font-size: 16px;
+		font-weight: bold;	
+		border-radius: 5px;
+	}
+	
+	.back-btn {
+		border: 2px solid #10D0A1; 
+		background-color: white;
+		color:  #10D0A1;
+	}
+	
+	.del-btn {
+		border:  none;
+		background-color: #10D0A1;
+		color: white;
+	}
+	
+	.icon-reply,
+	.icon-trash {
+		font-weight: bold;
+	}
+	
+	.back-btn:hover, 
+	.del-btn:hover {
+		color:rgb(100, 116, 128) ; 
+	}
+	
+
+</style>
+<body>
+	<th:block th:insert="~{inc/header.html :: index_header_menu}"></th:block>
+	<th:block th:insert="~{inc/header.html :: index_header_content_basic(#{menu.review},#{menu.review.desc})}"></th:block>
+	<div class="section services-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-lg-5"  data-aos="fade-up" data-aos-delay="">
+					<h3 class="subheading">리뷰 삭제하기</h3>
+					<h2 class="heading">Delete Supplement Review</h2>
+				</div>		
+			</div>	
+		
+			<div class="review-del">
+				<form method="POST" action="/delReview">
+					<input type="hidden" name="seq" th:value="${seq}" />
+					<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+					<input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}" />
+					<p class="del-comment">해당 게시글을 삭제하시겠습니까?</p>
+					<div class="buttons">
+						<div class="back-button">
+							<a href="/viewReview?seq=${seq}" class="back-btn">
+								<span class="icon-reply"> 뒤로가기</span>
+							</a>
+						</div>
+						<div class="del-button"></div>
+							<button type="submit" class="del-btn">
+								<span class="icon-trash"> 삭제하기</span>
+							</button>
+						</div>
+					</div>
+				</form>	
+			</div>
+				
+		</div>	
+	</div>
+	
+		<th:block th:insert="~{inc/footer.html :: footer}"></th:block>
+		<th:block th:insert="~{inc/asset.html :: templates_js}"></th:block>
+
+</body>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>	
+	  
+	</script>
+</html>

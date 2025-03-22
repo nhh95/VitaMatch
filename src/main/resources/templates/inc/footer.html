@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>footer.html</title>
+</head>
+<body>
+    <th:block th:fragment="footer">
+        <div class="site-footer">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="widget">
+                            <h3>About</h3>
+                            <p>[[#{footer.about}]]</p>
+                        </div> <!-- /.widget -->
+                        <div class="widget">
+                            <h3>Contact</h3>
+                            <address>[[#{footer.address}]]</address>
+                            <a href="tel://11234567890">0507-1316-4632</a>
+                        </div> <!-- /.widget -->
+                    </div> <!-- /.col-lg-3 -->
+                    
+                    <div class="col-lg-5">
+                        <div class="widget">
+                            <h3>Connect</h3>
+                            <ul class="list-unstyled social">
+                                <li><a href="https://github.com/chimy2" target="_blank"><span class="icon-github-alt" title="chimy2"></span></a></li>
+                                <li><a href="https://github.com/FJHGF" target="_blank"><span class="icon-github-alt" title="FJHGF"></span></a></li>
+                                <li><a href="https://github.com/deokgrit" target="_blank"><span class="icon-github-alt" title="deokgrit"></span></a></li>
+                                <li><a href="https://github.com/yujin0510" target="_blank"><span class="icon-github-alt" title="yujin0510"></span></a></li>
+                                <li><a href="https://github.com/nhh95" target="_blank"><span class="icon-github-alt" title="nhh95"></span></a></li>
+                                <li><a href="https://github.com/jiyun980" target="_blank"><span class="icon-github-alt" title="jiyun980"></span></a></li>
+                                <li><a href="https://github.com/Bristolparkway" target="_blank"><span class="icon-github-alt" title="Bristolparkway"></span></a></li>
+                                <li><a href="https://github.com/choeyouth" target="_blank"><span class="icon-github-alt" title="choeyouth"></span></a></li>
+                                <li><a href="https://github.com/JayChoi97" target="_blank"><span class="icon-github-alt" title="JayChoi97"></span></a></li>
+                            </ul>
+                        </div> <!-- /.widget -->
+                        <div class="widget">
+                        	<h3>[[#{title}]]</h3>
+                        	<!--<p>[(#{footer.member})]</p>-->
+                       	</div>
+                    </div> <!-- /.col-lg-3 -->
+
+                </div> <!-- /.row -->
+
+                <div class="row mt-1">
+                    <div class="col-12 text-center">
+                        <p>&copy; 2024. [[#{title}]]. All Rights Reserved.</p>
+
+                    </div>
+                </div>
+            </div> <!-- /.container -->
+        </div> <!-- /.site-footer -->
+    </th:block>
+</body>
+</html>
