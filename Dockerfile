@@ -16,7 +16,7 @@ FROM gradle:8.13-jdk21 AS builder
 WORKDIR /build
 
 # 로컬 소스코드를 컨테이너에 복사
-COPY COPY build.gradle settings.gradle /build/
+COPY build.gradle settings.gradle /build/
 
 # Gradle 빌드 (테스트 스킵 예시: -x test)
 RUN gradle clean build -x test
