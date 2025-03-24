@@ -17,7 +17,7 @@ jobs:
 
       - name: Enable PowerShell scripts temporarily
         run: Set-ExecutionPolicy Bypass -Scope Process -Force
-        shell: pwsh
+        shell: powershell
         
       - name: Spring Boot Build
         run: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
