@@ -13,10 +13,10 @@
 
 # (1) 빌드 스테이지
 FROM gradle:8.13-jdk21 AS builder
-WORKDIR /app
+WORKDIR /build
 
 # 로컬 소스코드를 컨테이너에 복사
-COPY . .
+COPY COPY build.gradle settings.gradle /build/
 
 # Gradle 빌드 (테스트 스킵 예시: -x test)
 RUN gradle clean build -x test
@@ -27,7 +27,7 @@ WORKDIR /app
 
 # builder 스테이지에서 빌드된 jar 파일을 복사
 #  예: 빌드 결과물이 build/libs/ 폴더에 *.jar 로 생성된다고 가정
-COPY --from=builder /app/build/libs/*.jar app.jar
+COPY --from=builder /build/build/libs/*.jar app.jar
 
 # 컨테이너 실행 시 노출할 포트 (예: 8091)
 EXPOSE 8091
