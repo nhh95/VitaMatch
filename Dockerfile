@@ -12,7 +12,7 @@
 
 
 # (1) 빌드 스테이지
-FROM gradle:8.2.1-jdk21 AS builder
+FROM gradle:8.13-jdk21 AS builder
 WORKDIR /app
 
 # 로컬 소스코드를 컨테이너에 복사
