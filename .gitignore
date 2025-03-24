@@ -1,7 +1,7 @@
 HELP.md
-.gradle
+
 build/
-!gradle/wrapper/gradle-wrapper.jar
+
 !**/src/main/**/build/
 !**/src/test/**/build/
 
@@ -31,23 +31,21 @@ out/
 /nbbuild/
 /dist/
 /nbdist/
-/.nb-gradle/
+
 
 ### VS Code ###
 .vscode/
 
 
-.gradle
+
 **/build/
 **/.settings/
 **/bin/
 !src/**/build/
 
-# Ignore Gradle GUI config
-gradle-app.setting
 
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
+
+
 
 # Avoid ignore Gradle wrappper properties
 !gradle-wrapper.properties
@@ -63,10 +61,10 @@ gradle-app.setting
 **/.metadata/
 
 application.yml
+src/main/resources/application.yml
 
-# Gradle 빌드 파일 제외
-*/build/
-*/gradle/
+
+
 
 # OS별 임시 파일
 .DS_Store
