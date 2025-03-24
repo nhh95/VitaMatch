@@ -30,7 +30,7 @@ jobs:
       - name: Gradle Build Action
         uses: gradle/gradle-build-action@v3.5.0
         with:
-          build-root-directory: nutri
+         # build-root-directory: nutri
           arguments: build
 
       - name: docker image build
