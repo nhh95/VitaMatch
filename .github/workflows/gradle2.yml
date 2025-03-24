@@ -22,9 +22,11 @@ jobs:
           New-Item -Path "./application.yml" -ItemType "File" -Force
           echo "${{ secrets.APPLICATION }}" > ./application.yml
           
-     
-      - name: build with gradle
-        run: ./gradlew bootjar
+      - name: Gradle Build Action
+        uses: gradle/gradle-build-action@v3.5.0
+
+      - name: Build with Gradle (bootJar)
+        run: ./gradlew bootJar
     
 
       - name: docker image build
