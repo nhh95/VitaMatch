@@ -30,7 +30,7 @@ jobs:
       - name: Gradle Build Action
         uses: gradle/gradle-build-action@v3.5.0
         with:
-          build-root-directory: ./C:\action-runner\_work\VitaMatch\VitaMatch
+          #build-root-directory: ./C:\action-runner\_work\VitaMatch\VitaMatch
           arguments: wrapper build
 
       - name: docker image build
