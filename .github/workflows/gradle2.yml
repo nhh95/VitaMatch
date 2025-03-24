@@ -22,10 +22,16 @@ jobs:
           New-Item -Path "./application.yml" -ItemType "File" -Force
           echo "${{ secrets.APPLICATION }}" > ./application.yml
           
-      #- name: Gradle Build Action
-       # uses: gradle/action/setup-gradle@v3
-        #with:
-        #  arguments: ./gradlew clean bootJar
+      - name: Gradle Build Action
+        uses: gradle/action/setup-gradle@v3
+        with:
+          arguments: ./gradlew wrapper 
+          
+      - name: Gradle Build Action
+        uses: gradle/action/setup-gradle@v3
+        with:
+          arguments: ./gradlew build
+      
       #- name: Build with Gradle
        # uses: gradle/actions@v4.3.0
        # with:
@@ -42,10 +48,10 @@ jobs:
      # - name: Build with Gradle Wrapper
       #  run: ./gradlew build --stacktrace
      
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee 
-        with:
-          arguments: wrapper build 
+     # - name: Build with Gradle
+     #   uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee 
+     #   with:
+      #    arguments: wrapper build 
             
 
       - name: docker image build
