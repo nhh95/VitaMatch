@@ -23,7 +23,7 @@ jobs:
           echo "${{ secrets.APPLICATION }}" > ./application.yml
           
       - name: Gradle Build Action
-        uses: gradle/gradle-build-action@v3.5.0
+        uses: gradle/action/setup-gradle@v3
         with:
           arguments: ./gradlew clean bootJar
 
