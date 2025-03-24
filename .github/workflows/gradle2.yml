@@ -22,12 +22,14 @@ jobs:
           New-Item -Path "./application.yml" -ItemType "File" -Force
           echo "${{ secrets.APPLICATION }}" > ./application.yml
           
-      - name: Gradle Build Action
-        uses: gradle/action/setup-gradle@v3
+      #- name: Gradle Build Action
+       # uses: gradle/action/setup-gradle@v3
+        #with:
+        #  arguments: ./gradlew clean bootJar
+      - name: Build with Gradle
+        uses: gradle/actions@v4.3.0
         with:
           arguments: ./gradlew clean bootJar
-
-    
 
       - name: docker image build
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/vitamatch .
