@@ -19,7 +19,7 @@ jobs:
       - name: make.application.yml
         run: |
           cd  ./src/main/resources
-          touch ./application.yml
+          New-Item -Path "./application.yml" -ItemType "File" -Force
           echo "${{ secrets.APPLICATION }}" > ./application.yml
           
       - name: Grant execute permisson for gradlew
