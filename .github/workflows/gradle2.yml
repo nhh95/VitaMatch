@@ -22,8 +22,6 @@ jobs:
           New-Item -Path "./application.yml" -ItemType "File" -Force
           echo "${{ secrets.APPLICATION }}" > ./application.yml
           
-      - name: Grant execute permisson for gradlew
-        run: ./gradlew
      
       - name: build with gradle
         run: ./gradlew clean build -x test --stacktrace
