@@ -23,7 +23,7 @@ jobs:
           echo "${{ secrets.APPLICATION }}" > ./application.yml
           
       - name: Grant execute permisson for gradlew
-        run: chmod +x gradlew
+        run: ./gradlew
      
       - name: build with gradle
         run: ./gradlew clean build -x test --stacktrace
