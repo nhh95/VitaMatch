@@ -1,4 +1,5 @@
 name: CI-CD
+
 on:
   push:
     branches: [main]
@@ -18,31 +19,14 @@ jobs:
 
       - name: make.application.yml
         run: |
-          cd  ./src/main/resources
+          cd ./src/main/resources
           New-Item -Path "./application.yml" -ItemType "File" -Force
           echo "${{ secrets.APPLICATION }}" > ./application.yml
-          
-     # - name: Build with Gradle # 프로젝트를 build 한다.
-     #   run: ./gradlew build
-      #  working-directory: ./VitaMatch
 
-     # - name: Build with Gradle
-        # You may pin to the exact commit or the version.
-        # uses: gradle/actions@94baf225fe0a508e581a564467443d0e2379123b
-       # uses: gradle/actions@v4.3.0
-
-     # - name: Build with Gradle
-    #    run: |
-       #     cd C:\action-runner\_work\VitaMatch\VitaMatch
-        #    ./gradlew.bat wrapper
-        #    ./gradlew.bat build
-            
-
-        
       - name: Gradle Build Action
         uses: gradle/gradle-build-action@v3.5.0
         with:
-          arguments: build
+          arguments: bootjar
 
       - name: docker image build
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/vitamatch .
@@ -55,17 +39,33 @@ jobs:
 
       - name: Docker Hub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/vitamatch
+ 
+     
+      # - name: Deploy to server SSH
+      #   uses: appleboy/ssh-action@v0.1.6
+      #   with:
+      #     host: ${{ secrets.SERVER_HOST }}
+      #     username: ${{ secrets.SERVER_USER }}
+      #     key: ${{ secrets.SERVER_SSH_KEY }}
+      #     script: |
+      #       #docker stop $(docker ps -a -q) 
+      #       #docker rm $(docker ps -a -q)
+      #       # Stop vitamatch container
+      #       if (docker ps -a --format '{{.Names}}' | Select-String '^vitamatch$') {
+      #         docker stop vitamatch
+      #       }
+      #       # Remove vitamatch container
+      #       if (docker ps -a --format '{{.Names}}' | Select-String '^vitamatch$') {
+      #         docker rm vitamatch
+      #       }
+             
+      #       # Run new vitamatch container
+      #       docker pull ${{ secrets.DOCKER_USERNAME }}/vitamatch
+      #       docker run -d -p 9080:8091 --name vitamatch ${{ secrets.DOCKER_USERNAME }}/vitamatch
 
-      - name: Deploy to server SSH
-        uses: appleboy/ssh-action@v0.1.6
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          script: |
-            #docker stop $(docker ps -a -q) 
-            #docker rm $(docker ps -a -q)
-            # Stop vitamatch container
+
+      - name: cmdtest
+        run: |
             if (docker ps -a --format '{{.Names}}' | Select-String '^vitamatch$') {
               docker stop vitamatch
             }
@@ -73,8 +73,12 @@ jobs:
             if (docker ps -a --format '{{.Names}}' | Select-String '^vitamatch$') {
               docker rm vitamatch
             }
-            
+             
             # Run new vitamatch container
             docker pull ${{ secrets.DOCKER_USERNAME }}/vitamatch
             docker run -d -p 9080:8091 --name vitamatch ${{ secrets.DOCKER_USERNAME }}/vitamatch
+
+
             
+ 
+       
