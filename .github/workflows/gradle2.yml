@@ -22,10 +22,16 @@ jobs:
           New-Item -Path "./application.yml" -ItemType "File" -Force
           echo "${{ secrets.APPLICATION }}" > ./application.yml
           
-      - name: Build with Gradle # 프로젝트를 build 한다.
-        run: ./gradlew build
-        working-directory: ./
-            
+     # - name: Build with Gradle # 프로젝트를 build 한다.
+     #   run: ./gradlew build
+      #  working-directory: ./VitaMatch
+
+        
+      - name: Gradle Build Action
+        uses: gradle/gradle-build-action@v3.5.0
+        with:
+          build-root-directory: ./VitaMatch
+          arguments: wrapper build
 
       - name: docker image build
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/vitamatch .
