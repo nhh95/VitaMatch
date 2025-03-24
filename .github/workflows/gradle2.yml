@@ -24,9 +24,9 @@ jobs:
           
       - name: Gradle Build Action
         uses: gradle/gradle-build-action@v3.5.0
+        with:
+          arguments: ./gradlew clean bootJar
 
-      - name: Build with Gradle (bootJar)
-        run: ./gradlew bootJar
     
 
       - name: docker image build
