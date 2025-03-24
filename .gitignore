@@ -38,17 +38,9 @@ out/
 
 
 
-**/build/
-**/.settings/
-**/bin/
-!src/**/build/
 
 
 
-
-
-# Avoid ignore Gradle wrappper properties
-!gradle-wrapper.properties
 
 # Cache of project
 .gradletasknamecache
@@ -70,10 +62,7 @@ src/main/resources/application.yml
 .DS_Store
 Thumbs.db
 
-# Java 빌드 파일
-*.class
-*.jar
-*.war
+
 
 demo/HELP.md
 
