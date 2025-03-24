@@ -1,5 +1,5 @@
 # 1. 기반 이미지로 경량화된 OpenJDK JRE 사용 (예: Alpine 리눅스 기반)
-FROM openjdk:11
+FROM openjdk:21
 
 # 2. 애플리케이션 JAR 파일을 빌드 아티팩트에서 가져오기 위한 ARG (Gradle 빌드 경로 적용)
 ARG JAR_FILE=build/libs/*.jar
