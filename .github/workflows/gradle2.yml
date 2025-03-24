@@ -19,15 +19,40 @@ jobs:
       - name: make.application.yml
         run: |
           cd  ./src/main/resources
-          touch ./application.yml
+          New-Item -Path "./application.yml" -ItemType "File" -Force
           echo "${{ secrets.APPLICATION }}" > ./application.yml
           
-      - name: Grant execute permisson for gradlew
-        run: chmod +x gradlew
+      - name: Gradle Build Action
+        uses: gradle/action/setup-gradle@v3
+        with:
+          arguments: ./gradlew wrapper 
+          
+      - name: Gradle Build Action
+        uses: gradle/action/setup-gradle@v3
+        with:
+          arguments: ./gradlew build
+      
+      #- name: Build with Gradle
+       # uses: gradle/actions@v4.3.0
+       # with:
+        #  arguments: ./gradlew clean bootJar
+
+      #- name: Build with Gradle
+       # uses: gradle/actions@v4.3.0
+        #with:
+         # arguments: clean bootJar
+          
+      #- name: Setup Gradle
+       # uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+
+     # - name: Build with Gradle Wrapper
+      #  run: ./gradlew build --stacktrace
      
-      - name: build with gradle
-        run: ./gradlew clean build -x test --stacktrace
-    
+     # - name: Build with Gradle
+     #   uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee 
+     #   with:
+      #    arguments: wrapper build 
+            
 
       - name: docker image build
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/vitamatch .
