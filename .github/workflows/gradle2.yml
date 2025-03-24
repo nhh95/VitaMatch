@@ -24,7 +24,7 @@ jobs:
           
      
       - name: build with gradle
-        run: ./gradlew clean build -x test --stacktrace
+        run: ./gradlew bootjar
     
 
       - name: docker image build
