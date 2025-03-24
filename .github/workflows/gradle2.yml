@@ -31,21 +31,18 @@ jobs:
         # uses: gradle/actions@94baf225fe0a508e581a564467443d0e2379123b
        # uses: gradle/actions@v4.3.0
 
-      - name: Build with Gradle
-        run: |
-            cd C:\action-runner\_work\VitaMatch\VitaMatch
-            ./gradlew.bat wrapper
-            ./gradlew.bat build
+     # - name: Build with Gradle
+    #    run: |
+       #     cd C:\action-runner\_work\VitaMatch\VitaMatch
+        #    ./gradlew.bat wrapper
+        #    ./gradlew.bat build
             
 
         
-     # - name: Gradle Build Action
-     #   uses: gradle/gradle-build-action@v3.5.0
-     #   with:
-         # build-root-directory: nutri
-      #    run: |
-      #      cd  C:\action-runner\_work\VitaMatch\VitaMatch
-      #    arguments: wrapper
+      - name: Gradle Build Action
+        uses: gradle/gradle-build-action@v3.5.0
+        with:
+          arguments: build
 
       - name: docker image build
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/vitamatch .
