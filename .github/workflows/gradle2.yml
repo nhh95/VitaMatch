@@ -34,8 +34,8 @@ jobs:
       - name: Build with Gradle
         run: |
             cd C:\action-runner\_work\VitaMatch\VitaMatch
-            gradlew.bat wrapper
-            gradlew.bat build
+            ./gradlew.bat wrapper
+            ./gradlew.bat build
             
 
         
