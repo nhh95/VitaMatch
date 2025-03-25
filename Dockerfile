@@ -32,15 +32,18 @@
 
 
 # 1. 기반 이미지로 경량화된 OpenJDK JRE 사용 (예: Alpine 리눅스 기반)
-FROM openjdk:21-jdk
+FROM openjdk:21
 
-RUN apt-get update && apt-get install -y locales
+RUN apk add --no-cache \
+    bash \
+    curl \
+    tzdata \
+    icu-libs
 
 # 원하는 로케일 생성 및 설정 (한국어)
-RUN locale-gen ko_KR.UTF-8
-ENV LANG ko_KR.UTF-8
-ENV LANGUAGE ko_KR:en # 필요에 따라 영어 추가
-ENV LC_ALL ko_KR.UTF-8
+ENV LANG=ko_KR.UTF-8
+ENV LANGUAGE=ko_KR:en
+ENV LC_ALL=ko_KR.UTF-8
 
 # 2. 애플리케이션 JAR 파일을 빌드 아티팩트에서 가져오기 위한 ARG (Gradle 빌드 경로 적용)
 ARG JAR_FILE=build/libs/*.jar
