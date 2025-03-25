@@ -76,7 +76,7 @@ jobs:
              
             # Run new vitamatch container
             docker pull ${{ secrets.DOCKER_USERNAME }}/vitamatch
-            docker run -d -p 9080:8091 --name vitamatch ${{ secrets.DOCKER_USERNAME }}/vitamatch
+            docker run -d -p 9080:8091 -e TZ=Asia/Seoul --name vitamatch ${{ secrets.DOCKER_USERNAME }}/vitamatch
 
 
             
