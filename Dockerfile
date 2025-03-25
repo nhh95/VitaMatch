@@ -40,7 +40,11 @@ ARG JAR_FILE=build/libs/*.jar
 # 3. 컨테이너 내부에 app.jar 이름으로 JAR 복사
 COPY ${JAR_FILE} app.jar
 
+
+
 EXPOSE 8091
+
+ENV TZ Asia/Seoul
 
 # 4. 컨테이너 시작 시 실행할 명령 (Spring Boot JAR 실행)
 ENTRYPOINT ["java", "-jar", "/app.jar"]
