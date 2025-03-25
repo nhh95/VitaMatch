@@ -32,7 +32,7 @@
 
 
 # 1. 기반 이미지로 경량화된 OpenJDK JRE 사용 (예: Alpine 리눅스 기반)
-FROM openjdk:21
+FROM openjdk:21-jdk-bullseye
 
 # apt-get 으로 패키지 설치
 RUN apt-get update && apt-get install -y locales tzdata curl
