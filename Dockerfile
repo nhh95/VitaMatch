@@ -40,7 +40,7 @@ RUN apt-get update && apt-get install -y locales tzdata curl
 # 로케일 생성 및 설정
 RUN locale-gen ko_KR.UTF-8
 ENV LANG=ko_KR.UTF-8
-ENV LANGUAGE=ko_KR:en
+ENV LANGUAGE=ko_KR
 ENV LC_ALL=ko_KR.UTF-8
 ENV TZ=Asia/Seoul
 
