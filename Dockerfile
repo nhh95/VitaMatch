@@ -32,7 +32,7 @@
 
 
 # 1. 기반 이미지로 경량화된 OpenJDK JRE 사용 (예: Alpine 리눅스 기반)
-FROM openjdk:21
+FROM openjdk:21-jdk
 
 RUN apt-get update && apt-get install -y locales
 
